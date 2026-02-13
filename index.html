@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: V01_06_0 -->
+    <!-- App Version: V1_7_0 -->
     <style>
 
         
@@ -210,6 +210,146 @@
         .dropdown-tag.hardware { color: var(--orange); }
         .dropdown-tag.concept { color: var(--green); }
         .dropdown-tag.art { color: var(--cyan); }
+
+        /* Hamburger Button */
+        .nav-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        /* Mobile Nav */
+        @media (max-width: 768px) {
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 44px;
+                left: 0;
+                right: 0;
+                background: rgba(12, 12, 12, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 8px 0;
+                z-index: 200;
+            }
+
+            .nav-links.mobile-open {
+                display: flex;
+            }
+
+            .nav-links > a,
+            .nav-links > .nav-dropdown > a {
+                display: block;
+                padding: 12px 24px;
+                font-size: 13px;
+                font-weight: 600;
+                text-align: left;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #e0e0e0 !important;
+            }
+
+            .nav-links .nav-divider {
+                width: auto;
+                height: 1px;
+                background: var(--border);
+                margin: 4px 24px;
+            }
+
+            .nav-dropdown {
+                flex-direction: column;
+                align-items: stretch;
+                height: auto;
+            }
+
+            .nav-dropdown-menu {
+                display: block;
+                position: static;
+                padding-top: 0;
+            }
+
+            .nav-dropdown-menu-inner {
+                background: none;
+                backdrop-filter: none;
+                border: none;
+                min-width: 0;
+                padding: 0;
+            }
+
+            .nav-dropdown-menu-inner a {
+                display: block;
+                padding: 10px 24px 10px 44px !important;
+                font-size: 12px !important;
+                font-weight: 400 !important;
+                text-transform: none !important;
+                letter-spacing: 0 !important;
+                color: #aaa !important;
+                text-align: left !important;
+            }
+
+            /* Hide banner panels on mobile */
+            .banner-panel {
+                display: none;
+            }
+
+            /* Card text flows across full image on mobile */
+            .app-card-img .app-name,
+            .app-card-img .app-desc {
+                margin-right: 0;
+            }
+
+            .app-card-img::before {
+                background: rgba(18,18,18,0.75);
+            }
+
+            .shop-panel-img::before {
+                background: rgba(18,18,18,0.75);
+            }
+
+            .shop-panel-img > * {
+                margin-right: 0;
+            }
+
+            /* Marquee — scroll on mobile instead of fade */
+            .marquee-item {
+                padding: 0;
+                font-size: 11px;
+                text-align: left;
+                width: auto;
+                transition: none;
+                opacity: 0;
+            }
+
+            .marquee-item.active {
+                animation: marquee-scroll 8s linear;
+            }
+
+            @keyframes marquee-scroll {
+                0% { opacity: 1; transform: translateX(100%); }
+                5% { opacity: 1; }
+                95% { opacity: 1; }
+                100% { opacity: 1; transform: translateX(-100%); }
+            }
+        }
 
 
         /* BANNER */
@@ -1340,13 +1480,34 @@
             .project-gallery { grid-template-columns: 1fr; }
         }
 
+        /* Mobile card text overrides — must come after all duplicate declarations */
+        @media (max-width: 768px) {
+            .app-card-img .app-name,
+            .app-card-img .app-desc {
+                margin-right: 0 !important;
+            }
+            .app-card-img .app-desc {
+                color: #e0e0e0 !important;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            }
+            .app-card-img .app-name {
+                text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            }
+            .app-card-img::before {
+                background: rgba(18,18,18,0.75) !important;
+            }
+            .shop-panel-img::before {
+                background: rgba(18,18,18,0.75) !important;
+            }
+        }
+
     </style>
 </head>
 <body>
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span>ITSWESSMITHYO</span> <span class="nav-app">artist site app</span> <span class="nav-version">[V01_06_0]</span></a>
+        <a href="#home" class="nav-brand"><span>ITSWESSMITHYO</span> <span class="nav-app">artist site app</span> <span class="nav-version">[V1_7_0]</span></a>
         <div class="nav-links">
             <a href="#home">Home</a>
             <div class="nav-dropdown">
@@ -1371,6 +1532,9 @@
             <div class="nav-divider"></div>
             <a href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank">Join Email List</a>
         </div>
+        <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <section id="home" class="page-section active">
@@ -1772,12 +1936,12 @@
             <a class="app-card app-card-img" href="https://itswessmithyo.myshopify.com/" target="_blank" style="background-image:url('img/shop/shop_yocap_green.png');">
                 <div class="app-name">Shop</div>
                 <div class="app-desc">All of my merch is tested by me, worn by me &mdash; it's the same goods you see in all my videos. I use <strong>Printful</strong> to handle on-demand manufacturing and <strong>Shopify</strong>.<br><br><em>-thanks for your support-</em></div>
-                <div style="margin-top:auto;text-align:right;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">Visit the Yodega &rarr;</span></div>
+                <div style="margin-top:auto;text-align:right;position:relative;z-index:2;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">Visit the Yodega &rarr;</span></div>
             </a>
-            <a class="app-card app-card-img" href="https://buymeacoffee.com/itswessmithyo" target="_blank" style="background-image:url('img/shop/shop_yocap_rooster.png');">
-                <div class="app-name">Donate</div>
-                <div class="app-desc">Feed the artists.</div>
-                <div style="margin-top:auto;text-align:right;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">Buy Me a Coffee &rarr;</span></div>
+            <a class="app-card app-card-img" href="https://www.youtube.com/@ItsWesSmithYo" target="_blank" style="background-image:url('img/shop/shop_yocap_rooster.png');">
+                <div class="app-name">Support</div>
+                <div class="app-desc">Drop a Super Thanks, subscribe, or just come hang out.</div>
+                <div style="margin-top:auto;text-align:right;position:relative;z-index:2;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">YouTube &rarr;</span></div>
             </a>
         </div>
 
@@ -1804,7 +1968,7 @@
                 </div>
                 <div class="about-row">
                     <span class="about-row-label">Version</span>
-                    <span class="about-row-value">V01_06_0</span>
+                    <span class="about-row-value">V1_7_0</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label">License</span>
@@ -2137,6 +2301,10 @@
             
             // Scroll to top
             window.scrollTo(0, 0);
+
+            // Close mobile menu if open
+            var navLinks = document.querySelector('.nav-links');
+            if (navLinks) navLinks.classList.remove('mobile-open');
         }
 
         window.addEventListener('hashchange', handleRoute);
@@ -2212,7 +2380,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - V01_06_0 */
+        /* Banner WebGPU Pixelation Shader - V1_7_0 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2399,7 +2567,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - V01_06_0 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - V1_7_0 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
