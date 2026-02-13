@@ -1,0 +1,2715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneManShYo | Music, Software and Shenanigans for the Modern DIY DJ &amp; Producer</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Music, software and shenanigans for the modern DIY DJ & Producer. Open source tools, WebGPU visuals, and electronic music by Wes Smith.">
+    <meta name="author" content="Wes Smith">
+    <link rel="canonical" href="https://onemanshyo.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OneManShYo | Music, Software and Shenanigans">
+    <meta property="og:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
+    <meta property="og:image" content="https://onemanshyo.com/img/home/home_banner.png">
+    <meta property="og:url" content="https://onemanshyo.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="OneManShYo">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OneManShYo | Music, Software and Shenanigans">
+    <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
+    <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
+
+    <!-- App Version: V01_06_0 -->
+    <style>
+
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --surface-bg: rgba(255, 255, 255, 0.05);
+            --surface-hover: rgba(255, 255, 255, 0.08);
+            --surface-active: rgba(255, 255, 255, 0.12);
+            --cyan: #00d4ff;
+            --magenta: #ff006e;
+            --orange: #ffa500;
+            --green: #00ff88;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888;
+            --text-dim: #555;
+            --bg-dark: #0c0c0c;
+            --bg-mid: #1a1a1a;
+            --border: #333;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 44px;
+            background: rgba(12, 12, 12, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .nav-brand {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-brand span {
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-app {
+            font-size: 12px;
+            font-weight: 400;
+            background: none !important;
+            -webkit-text-fill-color: var(--orange) !important;
+        }
+
+        .nav-version {
+            font-size: 11px;
+            font-weight: 400;
+            background: none !important;
+            -webkit-text-fill-color: #999 !important;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 6px 12px;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 16px;
+            background: var(--border);
+            margin: 0 4px;
+        }
+
+        /* Neato Dropdown */
+        .nav-dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-dropdown > a {
+            cursor: pointer;
+        }
+
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            padding-top: 4px;
+            z-index: 200;
+        }
+
+            .nav-dropdown-menu-inner {
+            background: rgba(20, 20, 20, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            min-width: 200px;
+            padding: 6px 0;
+        }
+
+        .nav-dropdown-menu-inner {
+            background: rgba(20, 20, 20, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            min-width: 200px;
+            padding: 6px 0;
+        }
+
+        .nav-dropdown-menu-inner {
+            background: rgba(20, 20, 20, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            min-width: 200px;
+            padding: 6px 0;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu-inner a {
+            display: block;
+            padding: 8px 16px !important;
+            font-size: 12px !important;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+            font-weight: 500 !important;
+            color: var(--text-secondary) !important;
+        }
+
+        .nav-dropdown-menu-inner a:hover {
+            background: var(--surface-hover);
+            color: var(--text-primary) !important;
+        }
+
+        .nav-dropdown-menu-inner .dropdown-tag {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+        }
+
+        .dropdown-tag.app { color: var(--magenta); }
+        .dropdown-tag.hardware { color: var(--orange); }
+        .dropdown-tag.concept { color: var(--green); }
+        .dropdown-tag.art { color: var(--cyan); }
+
+
+        /* BANNER */
+        .banner {
+            position: relative;
+            margin-top: 44px;
+            width: 100%;
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            filter: contrast(1.05);
+        }
+
+        .banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(transparent, var(--bg-dark));
+        }
+
+        /* CONTENT */
+        .content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px 30px 20px;
+        }
+
+        /* BIO */
+        .bio-greeting {
+            text-align: center;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .bio-text {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .bio-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .bio-signoff {
+            text-align: center;
+            font-size: 20px;
+            color: var(--text-dim);
+            font-style: italic;
+            margin-top: 4px;
+            margin-bottom: 0;
+        }
+
+        /* HIGHLIGHTS */
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .highlight {
+            text-align: center;
+            background: var(--surface-bg);
+            padding: 16px 20px;
+            border-left: none;
+            font-size: 22px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .highlight a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .highlight a:hover {
+            text-decoration: underline;
+        }
+
+        
+
+        .highlight.magenta a {
+            color: var(--cyan);
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* LINK GRIDS */
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 8px;
+            margin-bottom: 48px;
+        }
+
+        .link-card {
+            background: var(--surface-bg);
+            padding: 14px 16px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .link-card .icon {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* NEATO */
+        .neato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 48px;
+        }
+
+        .neato-card {
+            background: var(--surface-bg);
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: background 0.15s;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        
+
+        .neato-card .neato-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .neato-card .neato-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .neato-card .neato-tag {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--cyan);
+            margin-top: 4px;
+        }
+
+        .neato-card.app .neato-tag { color: var(--magenta); }
+        .neato-card.hardware .neato-tag { color: var(--orange); }
+        .neato-card.concept .neato-tag { color: var(--green); }
+        .neato-card.art .neato-tag { color: var(--cyan); }
+
+        
+        @media (max-width: 600px) {
+            .banner {
+            position: relative; height: 200px; }
+            .bio-greeting {
+            text-align: center; font-size: 20px; }
+            .neato-grid { grid-template-columns: 1fr; }
+            .link-grid { grid-template-columns: 1fr 1fr; }
+            }
+    
+        /* FOOTER */
+        @media (max-width: 600px) {
+            }
+
+    
+        /* FOOTER */
+        footer {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 48px 30px;
+        }
+
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 10px 10px;
+        }
+
+        .footer-col-header {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ffa500;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-card {
+            padding: 4px 0;
+            text-decoration: none;
+            color: #888;
+            font-size: 11px;
+            font-weight: 400;
+            transition: color 100ms linear;
+        }
+
+        .footer-card:hover {
+            color: #00d4ff;
+        }
+
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 600px) {
+        }
+
+    
+
+        .banner-panel {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 320px;
+            background: rgba(0,0,0,0.25);
+            padding: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            z-index: 100;
+            cursor: pointer;
+            transition: box-shadow 0.15s;
+            user-select: none;
+        }
+
+        .banner-panel:hover {
+            box-shadow: 0 0 0 2px #aa00ff;
+        }
+
+        .banner-panel.dragging,
+        .banner-panel.dragging:hover {
+            cursor: grabbing;
+            box-shadow: 0 0 0 2px #00d4ff;
+        }
+
+        .banner-panel-left {
+            left: 44px;
+        }
+
+        .banner-panel-right {
+            right: 44px;
+        }
+
+        .yt-player-overlay {
+            transition: all 0.3s ease;
+        }
+
+
+
+        .yt-player-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .yt-player-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .yt-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(255,0,0,0.85);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .yt-play-btn::after {
+            content: "";
+            border-style: solid;
+            border-width: 8px 0 8px 16px;
+            border-color: transparent transparent transparent white;
+            margin-left: 3px;
+        }
+
+        .yt-player-info {
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .yt-player-title {
+            font-size: 11px;
+            color: #ccc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+            margin-right: 8px;
+        }
+
+        .yt-player-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .yt-player-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .yt-player-dot.active {
+            background: var(--cyan);
+        }
+
+        .yt-player-iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        @media (max-width: 600px) {
+    
+        }
+
+        .marquee-bar {
+            background: transparent;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+            border-top: 1px solid #333;
+        }
+
+        .marquee-track {
+            position: relative;
+            height: 34px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .marquee-item {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            line-height: 34px;
+            position: absolute;
+            width: 100%;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 3s ease;
+        }
+
+        .marquee-item.active {
+            opacity: 1;
+        }
+
+        .marquee-item a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+
+        .marquee-item a:hover {
+            color: rgba(255,255,255,0.8);
+        }
+            5% { transform: translateY(0); opacity: 1; }
+            45% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-100%); opacity: 0; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+    
+        /* SPA Routing */
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+
+        /* === Subpage Styles === */
+
+        .project-hero {
+            margin-top: 44px;
+            width: 100%;
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .project-hero img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: contrast(1.05);
+        }
+
+        .project-hero.no-image {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0c0c0c 100%);
+        }
+
+        .project-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 160px;
+            background: linear-gradient(transparent, var(--bg-dark));
+        }
+
+        .project-hero-text {
+            position: relative;
+            z-index: 2;
+            padding: 0 30px 24px;
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .project-tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .project-tag.app { color: var(--magenta); }
+
+        .project-tag.hardware { color: var(--orange); }
+
+        .project-tag.concept { color: var(--green); }
+
+        .project-tag.art { color: var(--cyan); }
+
+        .project-title {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+        }
+
+        .project-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 32px 30px 80px;
+        }
+
+        .project-section {
+            margin-bottom: 16px;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 10px;
+            border-radius: 8px;
+        }
+
+        .project-section h2 {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #00d4ff;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .project-text {
+            font-size: 24px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .project-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .project-text a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .project-text a:hover {
+            text-decoration: underline;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            filter: contrast(1.02);
+        }
+
+        .project-spec {
+            background: none;
+            padding: 6px 6px;
+            margin-bottom: 4px;
+            font-size: 21px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .project-spec strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .project-back {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+
+        .project-back:hover {
+            color: var(--text-secondary);
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--surface-bg);
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.15s;
+        }
+
+        .project-link:hover {
+            background: var(--surface-hover);
+        }
+
+        .project-link.magenta { color: var(--magenta); }
+
+        .project-link.orange { color: var(--orange); }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .app-card {
+            background: rgba(255,255,255,0.05);
+            padding: 10px 10px;
+            text-decoration: none;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            text-align: left;
+            border-radius: 8px;
+        }
+
+        .app-card-img {
+            position: relative;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .app-card-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, transparent 20%, rgba(18,18,18,0.85) 50%, rgba(18,18,18,1) 65%);
+            z-index: 1;
+        }
+
+        .app-card-img .app-name,
+        .app-card-img .app-desc {
+            position: relative;
+            z-index: 2;
+            margin-right: 50%;
+        }
+
+        .shop-panel-img {
+            position: relative;
+            min-height: 200px;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .shop-panel-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, transparent 20%, rgba(18,18,18,0.85) 50%, rgba(18,18,18,1) 65%);
+            z-index: 1;
+        }
+
+        .shop-panel-img > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-name {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #00d4ff;
+            padding-bottom: 6px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .app-desc {
+            font-size: 18px;
+            font-weight: 400;
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        .app-tag {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ff006e;
+            margin-top: 4px;
+        }
+
+        /* NEATO */
+
+
+
+
+        /* === ABOUT PAGE === */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 30px 80px;
+        }
+
+
+        .about-section {
+            background: rgba(255,255,255,0.05);
+            padding: 10px 10px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+        }
+
+        .about-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #00d4ff;
+            text-align: left;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .about-row {
+            padding: 6px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about-row-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #888;
+        }
+
+        .about-row-value {
+            font-size: 13px;
+            color: #e0e0e0;
+        }
+
+        .about-row-value a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .about-row-value a:hover {
+            text-decoration: underline;
+        }
+
+        .about-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            margin-right: 6px;
+            margin-bottom: 4px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .about-tag.cyan { color: #00d4ff; }
+        .about-tag.purple { color: #aa00ff; }
+        .about-tag.magenta { color: #ff006e; }
+        .about-tag.orange { color: #ffa500; }
+        .about-tag.green { color: #00ff88; }
+
+        /* === PAGE CONTENT (landing pages) === */
+        .page-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 30px 80px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 24px;
+        }
+
+        /* === SHOP === */
+        .shop-text {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #aaa;
+            margin-bottom: 16px;
+        }
+
+        .shop-text strong {
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .shop-signoff {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-top: 24px;
+            margin-bottom: 40px;
+        }
+
+        .shop-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.05);
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.15s;
+        }
+
+        .shop-link:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* === APP GRID (neato + apps landing) === */
+        .app-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .app-card {
+            background: rgba(255,255,255,0.05);
+            padding: 10px 10px;
+            text-decoration: none;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            text-align: left;
+            border-radius: 8px;
+        }
+
+        .app-card-img {
+            position: relative;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .app-card-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, transparent 20%, rgba(18,18,18,0.85) 50%, rgba(18,18,18,1) 65%);
+            z-index: 1;
+        }
+
+        .app-card-img .app-name,
+        .app-card-img .app-desc {
+            position: relative;
+            z-index: 2;
+            margin-right: 50%;
+        }
+
+        .shop-panel-img {
+            position: relative;
+            min-height: 200px;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .shop-panel-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, transparent 20%, rgba(18,18,18,0.85) 50%, rgba(18,18,18,1) 65%);
+            z-index: 1;
+        }
+
+        .shop-panel-img > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-name {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #00d4ff;
+            padding-bottom: 6px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .app-desc {
+            font-size: 18px;
+            font-weight: 400;
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        .app-tag {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ff006e;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .app-grid { grid-template-columns: 1fr; }
+        }
+
+        /* === PROJECT PAGES === */
+        .project-hero {
+            margin-top: 44px;
+            width: 100%;
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-hero img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .project-hero.no-image {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0c0c0c 100%);
+        }
+
+        .project-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 160px;
+            background: linear-gradient(transparent, #0c0c0c);
+        }
+
+        .project-hero-text {
+            position: relative;
+            z-index: 2;
+            padding: 0 30px 24px;
+            max-width: 1300px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .project-tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .project-tag.app { color: var(--magenta, #ff006e); }
+        .project-tag.hardware { color: var(--orange, #ffa500); }
+        .project-tag.concept { color: var(--green, #00ff88); }
+        .project-tag.art { color: var(--cyan, #00d4ff); }
+
+        .project-title {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #e0e0e0;
+        }
+
+        .project-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 32px 30px 80px;
+        }
+
+        .project-section {
+            margin-bottom: 16px;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 10px;
+            border-radius: 8px;
+        }
+
+        .project-section h2 {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #00d4ff;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .project-text {
+            font-size: 24px;
+            line-height: 1.65;
+            color: #aaa;
+            margin-bottom: 16px;
+        }
+
+        .project-text strong {
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .project-text a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .project-text a:hover {
+            text-decoration: underline;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .project-spec {
+            background: rgba(255,255,255,0.05);
+            padding: 14px 18px;
+            margin-bottom: 8px;
+            font-size: 21px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        .project-spec strong {
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .project-back {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .project-back:hover {
+            color: #aaa;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.15s;
+        }
+
+        .project-link:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .project-link.magenta { color: #ff006e; }
+        .project-link.orange { color: #ffa500; }
+
+        @media (max-width: 600px) {
+            .project-hero { height: 200px; }
+            .project-title { font-size: 26px; }
+            .project-gallery { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
+
+    <nav>
+        <a href="#home" class="nav-brand"><span>ITSWESSMITHYO</span> <span class="nav-app">artist site app</span> <span class="nav-version">[V01_06_0]</span></a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <div class="nav-dropdown">
+                <a href="#neato">Neato</a>
+                <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
+                    <a href="#neato-bass-cutter">Bass Cutter</a>
+                    <a href="#neato-brick-fitness">Brick Fitnesss</a>
+                    <a href="#neato-yobots">Yobots</a>
+                    <a href="#neato-yobotics">Yobotics</a>
+                    <a href="#neato-yomatics">Yomatics</a>
+                </div></div>
+            </div>
+            <div class="nav-dropdown">
+                <a href="#apps">Apps</a>
+                <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
+                    <a href="#neato-onemanshyo">ONEMANSHYO</a>
+                    <a href="#neato-studiyo-partner">StudiYo Partner</a>
+                </div></div>
+            </div>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <div class="nav-divider"></div>
+            <a href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank">Join Email List</a>
+        </div>
+    </nav>
+
+    <section id="home" class="page-section active">
+<!-- BANNER -->
+    <div class="banner" id="top">
+        <canvas id="bannerCanvas" style="width:100%;height:100%;"></canvas>
+        <div class="banner-panel banner-panel-left"><img src="img/onemanshyo/OMS_BackToTheFuture_2F1610D0.png" style="width:100%; height:100%; object-fit:cover; border-radius:0;"></div>
+        <div class="banner-panel banner-panel-right yt-player-overlay" id="ytPlayer">
+            <div class="yt-player-thumb" id="ytThumb" onclick="playVideo()">
+                <img id="ytThumbImg" src="" alt="Latest video">
+                <div class="yt-play-btn"></div>
+            </div>
+            <div class="yt-player-info">
+                <div class="yt-player-title" id="ytTitle">Loading...</div>
+                <div class="yt-player-dots" id="ytDots"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+        <!-- BIO -->
+        <h1 class="bio-greeting">Hi Friend, It's Wes Smith Yo!</h1>
+
+        <p class="bio-text">
+            I'm an electronic dance music DJ & producer. My catalog of <strong>500+ songs</strong> spans multiple genres, 
+            over <strong>7,000 days</strong> in Beatport top charts, a few #1's, and <strong>millions of plays</strong> 
+            through video games on PlayStation, Xbox and music streaming platforms. I've spun for dance floors from NYC 
+            to India and hundreds of points in between. Thank you for your friendship, support & taking this ride with me.
+        
+            <br><span class="bio-signoff">-see u on the dance floor-</span>
+        </p>
+    </div>
+
+        <!-- MARQUEE -->
+        <div class="marquee-bar">
+            <div class="marquee-track">
+                <span class="marquee-item">Finally hit a million plays on a single song (<a href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spirit In The Sky - Burning Mon ReMix</a>). BIG hugs.</span>
+                <span class="marquee-item">My latest project is <a href="#neato-onemanshyo">ONEMANSHYO</a>. Live mixing + visuals. Check it all out on <a href="https://youtube.com/@ItsWesSmithYo" target="_blank">YouTube</a>.</span>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #333; margin: 0;">
+    </section>
+
+    <section id="apps" class="page-section">
+<div class="project-hero">
+            <img src="img/home/home_banner.png" alt="Wes Smith">
+        <div class="project-hero-text">
+            <h1 class="project-title">Apps</h1>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+        <div class="app-grid">
+            <a class="app-card app-card-img" href="#neato-onemanshyo" style="background-image:url('img/onemanshyo/OMS_hero_banner.png');">
+                <div class="app-name">ONEMANSHYO</div>
+                <div class="app-desc">Live electronic music performance combining DJ mixing and real-time audio-reactive visuals. WebGPU-powered. Single HTML file.</div>
+            </a>
+            <a class="app-card app-card-img" href="#neato-studiyo-partner" style="background-image:url('img/studiyo-partner/StudiYoPartner_Icon_Borderless.png');">
+                <div class="app-name">StudiYo Partner</div>
+                <div class="app-desc">Custom GPT for music producers, DJs and creatives. Your AI studio companion on the OpenAI platform.</div>
+            </a>
+        </div>
+    </div>
+    </section>
+
+    <section id="neato-bass-cutter" class="page-section">
+<div class="project-hero">
+            <img src="img/bass-cutter/Basscutter_Numark_Banner.jpg" alt="Bass Cutter">
+        <div class="project-hero-text">
+            <h1 class="project-title">Bass Cutter</h1>
+        </div>
+    </div>
+
+    <div class="project-content">
+
+        <div class="project-section">
+            <h2>About</h2>
+            <p class="project-text">
+                The Bass Cutter is a <strong>dual-purpose mobile DJ and lawn cutting rig</strong>. 
+                Because the grass won't cut itself and neither will the bass. Two versions have been built, 
+                each pushing the boundaries of yard maintenance and party delivery simultaneously.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Version 1.0</h2>
+            <div class="project-spec"><strong>DJ Rig</strong> &mdash; Numark Mixstream Pro Go</div>
+            <div class="project-spec"><strong>Mower</strong> &mdash; GreenWorks electric push mower</div>
+            <p class="project-text">The original. Proved the concept that you can cut grass and drop bass at the same time.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Version 2.0 &mdash; DJ Lon Gai Signature Edition</h2>
+            <div class="project-spec"><strong>DJ Rig</strong> &mdash; Pioneer DJ Flex 4</div>
+            <div class="project-spec"><strong>Sound</strong> &mdash; JBL Boombox</div>
+            <p class="project-text">The upgraded edition. More power, more bass, same freshly cut lawn.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Gallery</h2>
+            <div class="project-gallery">
+                <img src="img/bass-cutter/Basscutter_Numark_Banner.jpg" alt="Bass Cutter V1 Banner">
+                <img src="img/bass-cutter/Basscutter_Numark.jpeg" alt="Bass Cutter V1">
+            </div>
+        </div>
+
+        <a href="#home" class="project-back">&larr; Back to Home</a>
+    </div>
+    </section>
+
+    <section id="neato-brick-fitness" class="page-section">
+<div class="project-hero">
+            <img src="img/brick-fitness/BrickFitness_Rezzonate_Scene1.png" alt="Brick Fitnesss">
+        <div class="project-hero-text">
+            <h1 class="project-title">Brick Fitnesss</h1>
+        </div>
+    </div>
+
+    <div class="project-content">
+
+        <div class="project-section">
+            <h2>About</h2>
+            <p class="project-text">
+                <strong>Brick Fitnesss</strong> (three S's) is the revolutionary fitness program 
+                for broke artists. The equipment? <strong>Standard bricks.</strong> 
+                No gym membership. No fancy equipment. Just you, gravity, and some bricks.
+            </p>
+            <p class="project-text">
+                A satirical fitness program that proves you don't need expensive gear to stay in shape. 
+                Paired with curated workout playlists on Apple Music.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Gallery</h2>
+            <div class="project-gallery">
+                <img src="img/brick-fitness/BrickFitness_Rezzonate_Scene1.png" alt="Brick Fitnesss Scene 1">
+                <img src="img/brick-fitness/BrickFitness_Rezzonate_Scene2.png" alt="Brick Fitnesss Scene 2">
+            </div>
+        </div>
+
+        <a href="#home" class="project-back">&larr; Back to Home</a>
+    </div>
+    </section>
+
+    <section id="neato-onemanshyo" class="page-section">
+<div class="project-hero">
+            <img src="img/onemanshyo/OMS_hero_banner.png" alt="ONEMANSHYO">
+        <div class="project-hero-text">
+            <h1 class="project-title">ONEMANSHYO</h1>
+        </div>
+    </div>
+
+    <div class="project-content">
+
+        <div class="project-section">
+            <h2>About</h2>
+            <p class="project-text">
+                ONEMANSHYO is an electronic music performance combining DJ mixing and live reactive visual mixing. 
+                Think of it as a <strong>one-person audio/visual show</strong> &mdash; live DJ set with real-time 
+                generated visuals that react to the music.
+            </p>
+            <p class="project-text">
+                The custom app runs entirely in Chrome using <strong>WebGPU</strong> for shader rendering, 
+                <strong>Web Audio API</strong> for analysis and mixing, and the <strong>File System Access API</strong> 
+                for persistent library management. Zero installation. Single HTML file.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>App Features</h2>
+            <div class="project-spec"><strong>CREATE</strong> &mdash; Author WGSL fragment shaders with real-time preview, audio-reactive modulators (bass/mid/treble), FFT analysis, transform controls, and BumpR StickRs video overlays.</div>
+            <div class="project-spec"><strong>ORGANIZE</strong> &mdash; Library management with tagging, smart sets, search, and metadata editing. Containers package shader + audio + settings into portable .oms files.</div>
+            <div class="project-spec"><strong>PERFORM</strong> &mdash; 4-track mixer with 8 scenes, per-track EQ3, DJ FX, VFX, cue points, DSP compression, and quantized launching. Output composites to a pop-out window for live projection.</div>
+            <div class="project-spec"><strong>ADMIN</strong> &mdash; Audio card routing, camera/PIP configuration, BumpR StickRs management, effect pool assignments.</div>
+        </div>
+
+        <div class="project-section">
+            <h2>Technical</h2>
+            <p class="project-text">
+                Optimized for <strong>Chrome on MacBook Pro 14"</strong>. Uses WebGPU for 60fps shader rendering across 4 simultaneous tracks, 
+                with real-time audio analysis driving visual reactivity through bandpass-filtered peak detection with ADSR envelopes.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Watch</h2>
+            <a href="https://youtube.com/playlist?list=PLPXUWVWXkUdrpdPKtIV15qKag8IqgHPG4&si=BoFcRIzg6Mq7B3z5" target="_blank" class="project-link magenta">YouTube Playlist &rarr;</a>
+        </div>
+
+        <a href="#home" class="project-back">&larr; Back to Home</a>
+    </div>
+    </section>
+
+    <section id="neato-studiyo-partner" class="page-section">
+<div class="project-hero">
+            <img src="img/studiyo-partner/StudiYoPartner_Icon_Borderless.png" alt="StudiYo Partner">
+        <div class="project-hero-text">
+            <h1 class="project-title">StudiYo Partner</h1>
+        </div>
+    </div>
+
+    <div class="project-content">
+
+        <div class="project-section">
+            <h2>About</h2>
+            <p class="project-text">
+                StudiYo Partner is a <strong>custom GPT</strong> on the OpenAI platform, purpose-built for 
+                music and visuals producers, DJs, and creatives. Created November 6, 2023 &mdash; your AI studio companion 
+                that understands the creative workflow.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Try It</h2>
+            <a href="https://chatgpt.com/g/g-TCOFgCEBJ" target="_blank" class="project-link">Open StudiYo Partner on ChatGPT &rarr;</a>
+        </div>
+
+        <div class="project-section">
+            <h2>Gallery</h2>
+            <div class="project-gallery">
+                <img src="img/studiyo-partner/StudiYoPartner_Icon_Borderless.png" alt="StudiYo Partner">
+            </div>
+        </div>
+
+        <a href="#home" class="project-back">&larr; Back to Home</a>
+    </div>
+    </section>
+
+    <section id="neato-yobotics" class="page-section">
+<div class="project-hero">
+            <img src="img/yobotics/Yobotics_Banner.png" alt="Yobotics">
+        <div class="project-hero-text">
+            <h1 class="project-title">Yobotics</h1>
+        </div>
+    </div>
+
+    <div class="project-content">
+
+        <div class="project-section">
+            <h2>About</h2>
+            <p class="project-text">
+                Yobotics is a concept exploring <strong>robotic systems and automation</strong> 
+                in music creation, performance, and live visuals. The intersection of 
+                MIDI/DAW integration, automated stage elements, and interactive art installations.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Concepts</h2>
+            <div class="project-spec"><strong>MIDI/DAW Integration</strong> &mdash; Robotic systems controlled by music production software</div>
+            <div class="project-spec"><strong>Automated Stages</strong> &mdash; Kinetic stage elements that respond to performance</div>
+            <div class="project-spec"><strong>Interactive Art</strong> &mdash; Installations that blur the line between audience and performer</div>
+        </div>
+
+        <div class="project-section">
+            <h2>Gallery</h2>
+            <div class="project-gallery">
+                <img src="img/yobotics/Yobotics_Banner.png" alt="Yobotics Banner">
+                <img src="img/yobotics/Yobotics_Webs.png" alt="Yobotics Web">
+            </div>
+        </div>
+
+        <a href="#home" class="project-back">&larr; Back to Home</a>
+    </div>
+    </section>
+
+    <section id="neato-yobots" class="page-section">
+<div class="project-hero">
+            <img src="img/yobots/YoBotz_BurningMan_LEDDay1.jpg" alt="Yobots">
+        <div class="project-hero-text">
+            <h1 class="project-title">Yobots</h1>
+        </div>
+    </div>
+
+    <div class="project-content">
+
+        <div class="project-section">
+            <h2>About</h2>
+            <p class="project-text">
+                <strong>Squint &amp; Wowzer</strong> are LED art installations born in 2015. 
+                PVC geodesic domes wrapped in LEDs with audio sensors and topped with laser-cut headphone structures. 
+                They received a <strong>Burning Man regional project grant in 2016</strong>.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Build Details</h2>
+            <div class="project-spec"><strong>Structure</strong> &mdash; PVC geodesic domes</div>
+            <div class="project-spec"><strong>Lighting</strong> &mdash; LED strips with audio-reactive sensors</div>
+            <div class="project-spec"><strong>Topper</strong> &mdash; Laser-cut headphone structures</div>
+            <div class="project-spec"><strong>Grant</strong> &mdash; Burning Man regional project grant, 2016</div>
+        </div>
+
+        <div class="project-section">
+            <h2>Gallery</h2>
+            <div class="project-gallery">
+                <img src="img/yobots/YoBotz_BurningMan_CamoNet.jpg" alt="Yobots at Burning Man - Camo Net">
+                <img src="img/yobots/YoBotz_BurningMan_LEDDay1.jpg" alt="Yobots LED Day 1">
+                <img src="img/yobots/YoBotz_BurningMan_FabricDay1.jpg" alt="Yobots Fabric Day 1">
+                <img src="img/yobots/YoBotz_Serendipity.jpg" alt="Yobots at Serendipity">
+                <img src="img/yobots/YoBotz_BurningMan_Vid_Screen_Squint.png" alt="Squint">
+                <img src="img/yobots/YoBotz_BurningMan_Vid_Screen_Wowzer.png" alt="Wowzer">
+                <img src="img/yobots/YoBotz_DefaultWorldPortrait.jpg" alt="Yobots Default World">
+            </div>
+        </div>
+
+        <a href="#home" class="project-back">&larr; Back to Home</a>
+    </div>
+    </section>
+
+    <section id="neato-yomatics" class="page-section">
+<div class="project-hero">
+            <img src="img/yomatics/Yomatics_Donkey.png" alt="Yomatics">
+        <div class="project-hero-text">
+            <h1 class="project-title">Yomatics</h1>
+        </div>
+    </div>
+
+    <div class="project-content">
+
+        <div class="project-section">
+            <h2>About</h2>
+            <p class="project-text">
+                Yomatics explores <strong>cymatics</strong> &mdash; making sound vibrations visible. 
+                Water and materials react to electronic dance music frequencies in real-time, 
+                creating visual patterns that reveal the physical nature of sound.
+            </p>
+            <p class="project-text">
+                Different frequencies create different geometric patterns. Bass frequencies produce 
+                large, slow-moving waves. Higher frequencies create intricate, detailed structures. 
+                The result is a direct, physical visualization of music.
+            </p>
+        </div>
+
+        <div class="project-section">
+            <h2>Gallery</h2>
+            <div class="project-gallery">
+                <img src="img/yomatics/Yomatics_Donkey.png" alt="Yomatics">
+                <img src="img/yomatics/Yomatics-Live_2024-10-08.png" alt="Yomatics Live">
+            </div>
+        </div>
+
+        <a href="#home" class="project-back">&larr; Back to Home</a>
+    </div>
+    </section>
+
+    <section id="neato" class="page-section">
+<div class="project-hero">
+            <img src="img/home/home_banner.png" alt="Wes Smith">
+        <div class="project-hero-text">
+            <h1 class="project-title">Neato</h1>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+        <div class="app-grid">
+            <a class="app-card app-card-img" href="#neato-bass-cutter" style="background-image:url('img/bass-cutter/Basscutter_Numark_Banner.jpg');">
+                <div class="app-name">Bass Cutter</div>
+                <div class="app-desc">Dual-purpose mobile DJ and lawn cutting rig. Because the grass won't cut itself and neither will the bass.</div>
+            </a>
+            <a class="app-card app-card-img" href="#neato-brick-fitness" style="background-image:url('img/brick-fitness/BrickFitness_Rezzonate_Scene1.png');">
+                <div class="app-name">Brick Fitnesss</div>
+                <div class="app-desc">The revolutionary fitness program for broke artists. Standard bricks. No gym required. Three S's.</div>
+            </a>
+            <a class="app-card app-card-img" href="#neato-yobots" style="background-image:url('img/yobots/YoBotz_BurningMan_LEDDay1.jpg');">
+                <div class="app-name">Yobots</div>
+                <div class="app-desc">Squint &amp; Wowzer: LED art installations. PVC domes, audio sensors, laser-cut headphones. Burning Man 2016.</div>
+            </a>
+            <a class="app-card app-card-img" href="#neato-yobotics" style="background-image:url('img/yobotics/Yobotics_Banner.png');">
+                <div class="app-name">Yobotics</div>
+                <div class="app-desc">Exploring robotic systems and automation in music creation, performance, and live visuals.</div>
+            </a>
+            <a class="app-card app-card-img" href="#neato-yomatics" style="background-image:url('img/yomatics/Yomatics_Donkey.png');">
+                <div class="app-name">Yomatics</div>
+                <div class="app-desc">Making sound visible. Cymatics exploration where water and materials react to electronic dance music in real-time.</div>
+            </a>
+        </div>
+
+    </div>
+    </section>
+
+    <section id="shop" class="page-section">
+<div class="project-hero">
+            <img src="img/home/home_banner.png" alt="Wes Smith">
+        <div class="project-hero-text">
+            <h1 class="project-title">Yodega</h1>
+            <p class="page-subtitle" style="color:#aaa;margin-top:4px;">Yo + Bodega</p>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+        <div class="app-grid">
+            <a class="app-card app-card-img" href="https://itswessmithyo.myshopify.com/" target="_blank" style="background-image:url('img/shop/shop_yocap_green.png');">
+                <div class="app-name">Shop</div>
+                <div class="app-desc">All of my merch is tested by me, worn by me &mdash; it's the same goods you see in all my videos. I use <strong>Printful</strong> to handle on-demand manufacturing and <strong>Shopify</strong>.<br><br><em>-thanks for your support-</em></div>
+                <div style="margin-top:auto;text-align:right;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">Visit the Yodega &rarr;</span></div>
+            </a>
+            <a class="app-card app-card-img" href="https://buymeacoffee.com/itswessmithyo" target="_blank" style="background-image:url('img/shop/shop_yocap_rooster.png');">
+                <div class="app-name">Donate</div>
+                <div class="app-desc">Feed the artists.</div>
+                <div style="margin-top:auto;text-align:right;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">Buy Me a Coffee &rarr;</span></div>
+            </a>
+        </div>
+
+    </div>
+    </section>
+
+    <section id="about" class="page-section">
+<div class="project-hero">
+            <img src="img/home/home_banner.png" alt="Wes Smith">
+        <div class="project-hero-text">
+            <h1 class="project-title">About This Site</h1>
+            <p style="color:#aaa;margin-top:4px;font-size:13px;">A Music Tools Project &mdash; Part of the YoTeam! Ecosystem</p>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+        <div class="app-grid">
+            <div class="about-section" style="height:200px;margin-bottom:0;">
+                <div class="about-section-title">Application</div>
+                <div class="about-row">
+                    <span class="about-row-label">App</span>
+                    <span class="about-row-value">ITSWESSMITHYO Artist Site</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">Version</span>
+                    <span class="about-row-value">V01_06_0</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">License</span>
+                    <span class="about-row-value">GPL-3.0</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">Author</span>
+                    <span class="about-row-value">Wes Smith</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">Built With</span>
+                    <span class="about-row-value">Claude AI &mdash; Anthropic</span>
+                </div>
+            </div>
+            <div class="about-section" style="height:200px;margin-bottom:0;">
+                <div class="about-section-title">Technology</div>
+                <div class="about-row">
+                    <span class="about-row-label">Architecture</span>
+                    <span class="about-row-value">Single HTML File &mdash; No Frameworks, No Build Tools</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">Platform</span>
+                    <span class="about-row-value">Chrome &mdash; WebGPU Required</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">APIs</span>
+                    <span class="about-row-value">
+                        <span class="about-tag cyan">WebGPU</span>
+                        <span class="about-tag purple">WGSL</span>
+                        <span class="about-tag orange">YouTube Data v3</span>
+                        <span class="about-tag green">File System Access</span>
+                    </span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">Shaders</span>
+                    <span class="about-row-value">Banner Pixelation &amp; Particle Cursor Trail</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-grid">
+            <div class="about-section" style="height:200px;margin-bottom:0;">
+                <div class="about-section-title">Music Tools Ecosystem</div>
+                <div class="about-row">
+                    <span class="about-row-label">ONEMANSHYO</span>
+                    <span class="about-row-value">WebGPU Audio-Reactive Visual Performance</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">StudiYo Partner</span>
+                    <span class="about-row-value">Music Production Project Management</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">Artist Site</span>
+                    <span class="about-row-value">This App &mdash; WebGPU-Enhanced Artist Portfolio</span>
+                </div>
+            </div>
+            <div class="about-section" style="height:200px;margin-bottom:0;">
+                <div class="about-section-title">Links</div>
+                <div class="about-row">
+                    <span class="about-row-label">GitHub</span>
+                    <span class="about-row-value"><a href="https://github.com/itswessmithyo" target="_blank">github.com/itswessmithyo</a></span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">YouTube</span>
+                    <span class="about-row-value"><a href="https://www.youtube.com/@ItsWesSmithYo" target="_blank">@ItsWesSmithYo</a></span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label">Email List</span>
+                    <span class="about-row-value"><a href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank">Subscribe</a></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+    <hr style="border: none; border-top: 1px solid #333; margin: 0;">
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-col">
+                <div class="footer-col-header">Official</div>
+                <a class="footer-card" href="https://itswessmithyo.com" target="_blank">Website</a>
+                <a class="footer-card" href="https://www.dropbox.com/sh/pbc6jpslcpyio8l/AADAw4W7Dv14cPPUzhuxpTDBa?dl=0" target="_blank">EPK</a>
+                <a class="footer-card" href="https://www.youtube.com/@ItsWesSmithYo/posts" target="_blank">Blog</a>
+                <a class="footer-card" href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank">Email List</a>
+                <a class="footer-card" href="https://itswessmithyo.myshopify.com/" target="_blank">Yodega / Shop</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-header">Music &amp; Visuals</div>
+                <a class="footer-card" href="https://www.youtube.com/@ItsWesSmithYo/" target="_blank">YouTube</a>
+                <a class="footer-card" href="https://music.apple.com/us/artist/wes-smith/299074273" target="_blank">Apple Music</a>
+                <a class="footer-card" href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spotify</a>
+                <a class="footer-card" href="https://www.beatport.com/artist/wes-smith/190219" target="_blank">Beatport</a>
+                <a class="footer-card" href="https://soundcloud.com/itswessmithyo" target="_blank">SoundCloud</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-header">Socials</div>
+                <a class="footer-card" href="https://x.com/ItsWesSmithYo" target="_blank">X / Twitter</a>
+                <a class="footer-card" href="https://www.instagram.com/itswessmithyo/" target="_blank">Instagram</a>
+                <a class="footer-card" href="https://www.tiktok.com/@itswessmithyo" target="_blank">TikTok</a>
+                <a class="footer-card" href="https://www.threads.com/@itswessmithyo" target="_blank">Threads</a>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 - YoTeam!</div>
+    </footer>
+
+
+
+    <script>
+    const YT_API_KEY = 'AIzaSyDmkwW0HRZQJ0VW0mfb-CwaaA-1l-DMyPc';
+    const CHANNEL_ID = 'UC3bhbb9C4szjrfRmfyaDKaw';
+    let videos = [];
+    let currentIdx = 0;
+    let rotateTimer = null;
+
+    async function loadVideos() {
+        try {
+            // Get uploads playlist
+            const chRes = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${YT_API_KEY}`);
+            const chData = await chRes.json();
+            const uploadsId = chData.items[0].contentDetails.relatedPlaylists.uploads;
+
+            // Get latest 15 videos
+            const plRes = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=15&key=${YT_API_KEY}`);
+            const plData = await plRes.json();
+            const videoIds = plData.items.map(i => i.snippet.resourceId.videoId).join(',');
+
+            // Get durations to filter shorts
+            const vRes = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${videoIds}&key=${YT_API_KEY}`);
+            const vData = await vRes.json();
+
+            // Filter: keep videos longer than 60 seconds
+            videos = vData.items.filter(v => {
+                const dur = v.contentDetails.duration;
+                const match = dur.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+                if (!match) return false;
+                const secs = (parseInt(match[1]||0)*3600) + (parseInt(match[2]||0)*60) + parseInt(match[3]||0);
+                return secs > 60;
+            }).slice(0, 5);
+
+            if (videos.length > 0) {
+                buildDots();
+                showVideo(0);
+                rotateTimer = setInterval(() => {
+                    currentIdx = (currentIdx + 1) % videos.length;
+                    showVideo(currentIdx);
+                }, 5000);
+            }
+        } catch(e) {
+            document.getElementById('ytPlayer').style.display = 'none';
+        }
+    }
+
+    function showVideo(idx) {
+        currentIdx = idx;
+        const v = videos[idx];
+        const img = document.getElementById('ytThumbImg');
+        img.src = v.snippet.thumbnails.medium.url;
+        document.getElementById('ytTitle').textContent = v.snippet.title;
+        document.querySelectorAll('.yt-player-dot').forEach((d,i) => {
+            d.classList.toggle('active', i === idx);
+        });
+    }
+
+    function buildDots() {
+        const container = document.getElementById('ytDots');
+        container.innerHTML = '';
+        videos.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'yt-player-dot' + (i === 0 ? ' active' : '');
+            dot.onclick = (e) => { e.stopPropagation(); clearInterval(rotateTimer); showVideo(i); };
+            container.appendChild(dot);
+        });
+    }
+
+    function playVideo() {
+        const v = videos[currentIdx];
+        const player = document.getElementById('ytPlayer');
+        const thumb = document.getElementById('ytThumb');
+        
+        clearInterval(rotateTimer);
+        thumb.innerHTML = '<iframe class="yt-player-iframe" src="https://www.youtube.com/embed/' + v.id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    }
+
+    loadVideos();
+    </script>
+    <script>
+    (function() {
+        var items = document.querySelectorAll('.marquee-item');
+        if (items.length < 2) return;
+        var current = 0;
+        items[0].classList.add('active');
+        setInterval(function() {
+            items[current].classList.remove('active');
+            current = (current + 1) % items.length;
+            items[current].classList.add('active');
+        }, 8000);
+    })();
+    </script>
+
+    <script>
+    const YT_API_KEY = 'AIzaSyDmkwW0HRZQJ0VW0mfb-CwaaA-1l-DMyPc';
+    const CHANNEL_ID = 'UC3bhbb9C4szjrfRmfyaDKaw';
+    let videos = [];
+    let currentIdx = 0;
+    let rotateTimer = null;
+
+    async function loadVideos() {
+        try {
+            // Get uploads playlist
+            const chRes = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${YT_API_KEY}`);
+            const chData = await chRes.json();
+            const uploadsId = chData.items[0].contentDetails.relatedPlaylists.uploads;
+
+            // Get latest 15 videos
+            const plRes = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=15&key=${YT_API_KEY}`);
+            const plData = await plRes.json();
+            const videoIds = plData.items.map(i => i.snippet.resourceId.videoId).join(',');
+
+            // Get durations to filter shorts
+            const vRes = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${videoIds}&key=${YT_API_KEY}`);
+            const vData = await vRes.json();
+
+            // Filter: keep videos longer than 60 seconds
+            videos = vData.items.filter(v => {
+                const dur = v.contentDetails.duration;
+                const match = dur.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+                if (!match) return false;
+                const secs = (parseInt(match[1]||0)*3600) + (parseInt(match[2]||0)*60) + parseInt(match[3]||0);
+                return secs > 60;
+            }).slice(0, 5);
+
+            if (videos.length > 0) {
+                buildDots();
+                showVideo(0);
+                rotateTimer = setInterval(() => {
+                    currentIdx = (currentIdx + 1) % videos.length;
+                    showVideo(currentIdx);
+                }, 5000);
+            }
+        } catch(e) {
+            document.getElementById('ytPlayer').style.display = 'none';
+        }
+    }
+
+    function showVideo(idx) {
+        currentIdx = idx;
+        const v = videos[idx];
+        const img = document.getElementById('ytThumbImg');
+        img.src = v.snippet.thumbnails.medium.url;
+        document.getElementById('ytTitle').textContent = v.snippet.title;
+        document.querySelectorAll('.yt-player-dot').forEach((d,i) => {
+            d.classList.toggle('active', i === idx);
+        });
+    }
+
+    function buildDots() {
+        const container = document.getElementById('ytDots');
+        container.innerHTML = '';
+        videos.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'yt-player-dot' + (i === 0 ? ' active' : '');
+            dot.onclick = (e) => { e.stopPropagation(); clearInterval(rotateTimer); showVideo(i); };
+            container.appendChild(dot);
+        });
+    }
+
+    function playVideo() {
+        const v = videos[currentIdx];
+        const player = document.getElementById('ytPlayer');
+        const thumb = document.getElementById('ytThumb');
+        
+        clearInterval(rotateTimer);
+        thumb.innerHTML = '<iframe class="yt-player-iframe" src="https://www.youtube.com/embed/' + v.id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    }
+
+    loadVideos();
+    </script>
+
+    <script>
+    (function() {
+        var items = document.querySelectorAll('.marquee-item');
+        if (items.length < 2) return;
+        var current = 0;
+        items[0].classList.add('active');
+        setInterval(function() {
+            items[current].classList.remove('active');
+            current = (current + 1) % items.length;
+            items[current].classList.add('active');
+        }, 8000);
+    })();
+    </script>
+
+    <script>
+        /* Hash Router */
+        function handleRoute() {
+            const hash = window.location.hash.slice(1) || 'home';
+            
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(function(s) {
+                s.classList.remove('active');
+                s.style.display = 'none';
+            });
+            
+            // Show target section
+            var target = document.getElementById(hash);
+            if (!target) target = document.getElementById('home');
+            target.classList.add('active');
+            target.style.display = 'block';
+            
+            // Update nav active states
+            document.querySelectorAll('nav a[href^="#"]').forEach(function(a) {
+                a.classList.remove('active');
+                var href = a.getAttribute('href').slice(1);
+                if (href === hash) {
+                    a.classList.add('active');
+                }
+            });
+            
+            // Highlight parent nav for sub-pages
+            if (hash === 'neato-onemanshyo' || hash === 'neato-studiyo-partner') {
+                var appsLink = document.querySelector('nav a[href="#apps"]');
+                if (appsLink) appsLink.classList.add('active');
+            } else if (hash.startsWith('neato-')) {
+                var neatoLink = document.querySelector('nav a[href="#neato"]');
+                if (neatoLink) neatoLink.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        window.addEventListener('hashchange', handleRoute);
+        window.addEventListener('DOMContentLoaded', handleRoute);
+    </script>
+
+
+    <script>
+        /* Banner Panel Drag */
+        (function() {
+            const panels = document.querySelectorAll('.banner-panel');
+            let dragPanel = null;
+            let dragStartX = 0;
+            let dragStartY = 0;
+            let panelStartX = 0;
+            let panelStartY = 0;
+
+            panels.forEach(function(panel) {
+                panel.addEventListener('mousedown', function(e) {
+                    // Don't drag if clicking YT play button or thumbnail link
+                    if (e.target.closest('.yt-play-btn') || e.target.tagName === 'A') return;
+                    
+                    e.preventDefault();
+                    dragPanel = panel;
+                    dragPanel.classList.add('dragging');
+                    
+                    const rect = panel.getBoundingClientRect();
+                    const bannerRect = panel.parentElement.getBoundingClientRect();
+                    
+                    dragStartX = e.clientX;
+                    dragStartY = e.clientY;
+                    
+                    // Get current position relative to banner
+                    panelStartX = rect.left - bannerRect.left;
+                    panelStartY = rect.top - bannerRect.top;
+                    
+                    // Switch from left/right positioning to left/top for free movement
+                    panel.style.left = panelStartX + 'px';
+                    panel.style.right = 'auto';
+                    panel.style.top = panelStartY + 'px';
+                    panel.style.transform = 'none';
+                });
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!dragPanel) return;
+                
+                const dx = e.clientX - dragStartX;
+                const dy = e.clientY - dragStartY;
+                
+                const bannerRect = dragPanel.parentElement.getBoundingClientRect();
+                const panelW = dragPanel.offsetWidth;
+                const panelH = dragPanel.offsetHeight;
+                
+                // Constrain to banner bounds
+                let newX = panelStartX + dx;
+                let newY = panelStartY + dy;
+                
+                newX = Math.max(0, Math.min(newX, bannerRect.width - panelW));
+                newY = Math.max(0, Math.min(newY, bannerRect.height - panelH));
+                
+                dragPanel.style.left = newX + 'px';
+                dragPanel.style.top = newY + 'px';
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (dragPanel) {
+                    dragPanel.classList.remove('dragging');
+                    dragPanel = null;
+                }
+            });
+        })();
+    </script>
+
+    <script>
+        /* Banner WebGPU Pixelation Shader - V01_06_0 */
+        (async function() {
+            const canvas = document.getElementById('bannerCanvas');
+            if (!canvas) return;
+
+            // Fallback if no WebGPU
+            if (!navigator.gpu) {
+                const img = document.createElement('img');
+                img.src = 'img/home/home_banner.png';
+                img.alt = 'Wes Smith';
+                img.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:contrast(1.05)';
+                canvas.replaceWith(img);
+                return;
+            }
+
+            const adapter = await navigator.gpu.requestAdapter();
+            if (!adapter) return;
+            const device = await adapter.requestDevice();
+            const ctx = canvas.getContext('webgpu');
+            const format = navigator.gpu.getPreferredCanvasFormat();
+
+            function resizeCanvas() {
+                const banner = canvas.parentElement;
+                canvas.width = banner.clientWidth * window.devicePixelRatio;
+                canvas.height = banner.clientHeight * window.devicePixelRatio;
+                ctx.configure({ device, format, alphaMode: 'premultiplied' });
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Load banner image as texture
+            const img = new Image();
+            img.src = 'img/home/home_banner.png';
+            await new Promise(r => { img.onload = r; });
+
+            const imageBitmap = await createImageBitmap(img);
+            const texture = device.createTexture({
+                size: [imageBitmap.width, imageBitmap.height],
+                format: 'rgba8unorm',
+                usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST | GPUTextureUsage.RENDER_ATTACHMENT,
+            });
+            device.queue.copyExternalImageToTexture(
+                { source: imageBitmap },
+                { texture },
+                [imageBitmap.width, imageBitmap.height]
+            );
+
+            const sampler = device.createSampler({ magFilter: 'linear', minFilter: 'linear' });
+
+            // Uniforms: mouse(2f), radius(f), pixelSize(f), resolution(2f), imageAspect(f), pad(f)
+            const uniformBuffer = device.createBuffer({
+                size: 32,
+                usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+            });
+
+            const shaderCode = `
+                struct Uniforms {
+                    mouse: vec2f,
+                    radius: f32,
+                    pixelSize: f32,
+                    resolution: vec2f,
+                    imageAspect: f32,
+                    pad: f32,
+                };
+
+                @group(0) @binding(0) var imgTexture: texture_2d<f32>;
+                @group(0) @binding(1) var imgSampler: sampler;
+                @group(0) @binding(2) var<uniform> u: Uniforms;
+
+                struct VSOutput {
+                    @builtin(position) pos: vec4f,
+                    @location(0) uv: vec2f,
+                };
+
+                @vertex fn vs(@builtin(vertex_index) i: u32) -> VSOutput {
+                    var positions = array<vec2f, 4>(
+                        vec2f(-1, -1), vec2f(1, -1), vec2f(-1, 1), vec2f(1, 1)
+                    );
+                    var uvs = array<vec2f, 4>(
+                        vec2f(0, 1), vec2f(1, 1), vec2f(0, 0), vec2f(1, 0)
+                    );
+                    var out: VSOutput;
+                    out.pos = vec4f(positions[i], 0, 1);
+                    out.uv = uvs[i];
+                    return out;
+                }
+
+                @fragment fn fs(in: VSOutput) -> @location(0) vec4f {
+                    var uv = in.uv;
+
+                    // Cover-crop to match object-fit:cover, object-position:center 30%
+                    let canvasAspect = u.resolution.x / u.resolution.y;
+                    let imgAspect = u.imageAspect;
+                    var cropUV = uv;
+                    if (canvasAspect > imgAspect) {
+                        let scale = imgAspect / canvasAspect;
+                        let offset = (1.0 - scale) * 0.3;
+                        cropUV.y = uv.y * scale + offset;
+                    } else {
+                        let scale = canvasAspect / imgAspect;
+                        cropUV.x = uv.x * scale + (1.0 - scale) * 0.5;
+                    }
+
+                    // Distance from mouse (aspect-corrected)
+                    let aspect = vec2f(u.resolution.x / u.resolution.y, 1.0);
+                    let dist = length((uv - u.mouse) * aspect);
+
+                    // Pixelate near mouse
+                    var sampleUV = cropUV;
+                    if (dist < u.radius && u.mouse.x >= 0.0) {
+                        let strength = 1.0 - (dist / u.radius);
+                        let pxSize = mix(1.0, u.pixelSize, strength * strength);
+                        let texSize = vec2f(textureDimensions(imgTexture));
+                        let blockSize = max(vec2f(pxSize), vec2f(1.0));
+                        sampleUV = floor(cropUV * texSize / blockSize) * blockSize / texSize;
+                    }
+
+                    var color = textureSample(imgTexture, imgSampler, sampleUV);
+                    // Contrast boost (matches original filter: contrast(1.05))
+                    color = vec4f((color.rgb - 0.5) * 1.05 + 0.5, color.a);
+                    return color;
+                }
+            `;
+
+            const shaderModule = device.createShaderModule({ code: shaderCode });
+            const pipeline = device.createRenderPipeline({
+                layout: 'auto',
+                vertex: { module: shaderModule, entryPoint: 'vs' },
+                fragment: { module: shaderModule, entryPoint: 'fs', targets: [{ format }] },
+                primitive: { topology: 'triangle-strip' },
+            });
+
+            const bindGroup = device.createBindGroup({
+                layout: pipeline.getBindGroupLayout(0),
+                entries: [
+                    { binding: 0, resource: texture.createView() },
+                    { binding: 1, resource: sampler },
+                    { binding: 2, resource: { buffer: uniformBuffer } },
+                ],
+            });
+
+            // Mouse tracking on banner
+            let mouseX = -1, mouseY = -1, mouseIn = false;
+            const banner = canvas.parentElement;
+            banner.addEventListener('mousemove', function(e) {
+                const rect = banner.getBoundingClientRect();
+                mouseX = (e.clientX - rect.left) / rect.width;
+                mouseY = (e.clientY - rect.top) / rect.height;
+                mouseIn = true;
+            });
+            banner.addEventListener('mouseleave', function() { mouseIn = false; });
+
+            const PIXEL_RADIUS = 0.18;
+            const PIXEL_BLOCK = 48.0;
+
+            function render() {
+                if (canvas.width === 0 || canvas.height === 0) resizeCanvas();
+                const mx = mouseIn ? mouseX : -1;
+                const my = mouseIn ? mouseY : -1;
+
+                device.queue.writeBuffer(uniformBuffer, 0, new Float32Array([
+                    mx, my, PIXEL_RADIUS, PIXEL_BLOCK,
+                    canvas.width, canvas.height,
+                    imageBitmap.width / imageBitmap.height, 0
+                ]));
+
+                const encoder = device.createCommandEncoder();
+                const pass = encoder.beginRenderPass({
+                    colorAttachments: [{
+                        view: ctx.getCurrentTexture().createView(),
+                        clearValue: { r: 0.047, g: 0.047, b: 0.047, a: 1 },
+                        loadOp: 'clear', storeOp: 'store',
+                    }],
+                });
+                pass.setPipeline(pipeline);
+                pass.setBindGroup(0, bindGroup);
+                pass.draw(4);
+                pass.end();
+                device.queue.submit([encoder.finish()]);
+                requestAnimationFrame(render);
+            }
+            render();
+        })();
+    </script>
+
+
+    <script>
+        /* Particle Cursor Trail - WebGPU Compute + Render - V01_06_0 */
+        (async function() {
+            const canvas = document.getElementById('particleCanvas');
+            if (!canvas || !navigator.gpu) return;
+
+            const adapter = await navigator.gpu.requestAdapter();
+            if (!adapter) return;
+            const device = await adapter.requestDevice();
+            const ctx = canvas.getContext('webgpu');
+            const format = navigator.gpu.getPreferredCanvasFormat();
+
+            function resize() {
+                canvas.width = window.innerWidth * window.devicePixelRatio;
+                canvas.height = window.innerHeight * window.devicePixelRatio;
+                ctx.configure({ device, format, alphaMode: 'premultiplied' });
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const NUM_PARTICLES = 1024;
+            const PARTICLE_STRIDE = 8; // x, y, vx, vy, life, maxLife, size, pad
+            const bufferSize = NUM_PARTICLES * PARTICLE_STRIDE * 4;
+
+            // Initialize particles as dead (life=0)
+            const initData = new Float32Array(NUM_PARTICLES * PARTICLE_STRIDE);
+            for (let i = 0; i < NUM_PARTICLES; i++) {
+                const o = i * PARTICLE_STRIDE;
+                initData[o + 4] = 0; // life = 0 (dead)
+                initData[o + 5] = 1; // maxLife
+            }
+
+            const particleBuffers = [0, 1].map(() => {
+                const buf = device.createBuffer({
+                    size: bufferSize,
+                    usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST | GPUBufferUsage.VERTEX,
+                });
+                device.queue.writeBuffer(buf, 0, initData);
+                return buf;
+            });
+
+            // Uniforms: mouseX, mouseY, deltaTime, spawnFlag, resolution.xy, time, pad
+            const uniformBuffer = device.createBuffer({
+                size: 32,
+                usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+            });
+
+            // COMPUTE SHADER - particle physics
+            const computeCode = `
+                struct Particle {
+                    pos: vec2f,
+                    vel: vec2f,
+                    life: f32,
+                    maxLife: f32,
+                    size: f32,
+                    pad: f32,
+                };
+
+                struct Uniforms {
+                    mouse: vec2f,
+                    dt: f32,
+                    spawn: f32,
+                    resolution: vec2f,
+                    time: f32,
+                    pad: f32,
+                };
+
+                @group(0) @binding(0) var<storage, read> particlesIn: array<Particle>;
+                @group(0) @binding(1) var<storage, read_write> particlesOut: array<Particle>;
+                @group(0) @binding(2) var<uniform> u: Uniforms;
+
+                fn hash(n: f32) -> f32 {
+                    return fract(sin(n) * 43758.5453);
+                }
+
+                @compute @workgroup_size(64)
+                fn main(@builtin(global_invocation_id) id: vec3u) {
+                    let i = id.x;
+                    if (i >= ${NUM_PARTICLES}u) { return; }
+
+                    var p = particlesIn[i];
+
+                    if (p.life <= 0.0 && u.spawn > 0.0) {
+                        // Respawn at mouse with random velocity
+                        let seed = f32(i) + u.time * 100.0;
+                        let angle = hash(seed) * 6.283185;
+                        let speed = hash(seed + 1.0) * 80.0 + 20.0;
+                        p.pos = u.mouse;
+                        p.vel = vec2f(cos(angle) * speed, sin(angle) * speed - 40.0);
+                        p.life = hash(seed + 2.0) * 0.8 + 0.4;
+                        p.maxLife = p.life;
+                        p.size = hash(seed + 3.0) * 2.5 + 1.0;
+                    } else if (p.life > 0.0) {
+                        // Physics: drift + gravity + fade
+                        p.vel.y += 30.0 * u.dt; // gentle gravity
+                        p.vel *= 0.98; // drag
+                        p.pos += p.vel * u.dt;
+                        p.life -= u.dt;
+                    }
+
+                    particlesOut[i] = p;
+                }
+            `;
+
+            // RENDER SHADER - draw particles as points
+            const renderCode = `
+                struct Uniforms {
+                    mouse: vec2f,
+                    dt: f32,
+                    spawn: f32,
+                    resolution: vec2f,
+                    time: f32,
+                    pad: f32,
+                };
+
+                struct VSOutput {
+                    @builtin(position) pos: vec4f,
+                    @location(0) alpha: f32,
+                    @location(1) color: vec3f,
+                };
+
+                @group(0) @binding(0) var<uniform> u: Uniforms;
+
+                @vertex fn vs(
+                    @location(0) pos: vec2f,
+                    @location(1) vel: vec2f,
+                    @location(2) life: f32,
+                    @location(3) maxLife: f32,
+                    @location(4) size: f32,
+                    @location(5) pad: f32,
+                ) -> VSOutput {
+                    var out: VSOutput;
+
+                    if (life <= 0.0) {
+                        out.pos = vec4f(0.0, 0.0, 0.0, 0.0);
+                        out.alpha = 0.0;
+                        out.color = vec3f(0.0);
+                        return out;
+                    }
+
+                    // Pixel coords to clip space
+                    let clipX = (pos.x / u.resolution.x) * 2.0 - 1.0;
+                    let clipY = 1.0 - (pos.y / u.resolution.y) * 2.0;
+                    out.pos = vec4f(clipX, clipY, 0.0, 1.0);
+
+                    let t = life / maxLife;
+                    out.alpha = t * 0.8;
+
+                    // Color: cycle through cyan → purple → magenta (OMS palette)
+                    let phase = fract(f32(pad) * 0.1 + life * 2.0);
+                    if (phase < 0.33) {
+                        out.color = vec3f(0.0, 0.83, 1.0); // cyan #00d4ff
+                    } else if (phase < 0.66) {
+                        out.color = vec3f(0.67, 0.0, 1.0);  // purple #aa00ff
+                    } else {
+                        out.color = vec3f(1.0, 0.0, 0.43);  // magenta #ff006e
+                    }
+
+                    return out;
+                }
+
+                @fragment fn fs(in: VSOutput) -> @location(0) vec4f {
+                    return vec4f(in.color * in.alpha, in.alpha);
+                }
+            `;
+
+            const computeModule = device.createShaderModule({ code: computeCode });
+            const renderModule = device.createShaderModule({ code: renderCode });
+
+            // Compute pipeline
+            const computeBindGroupLayout = device.createBindGroupLayout({
+                entries: [
+                    { binding: 0, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'read-only-storage' } },
+                    { binding: 1, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'storage' } },
+                    { binding: 2, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'uniform' } },
+                ],
+            });
+
+            const computePipeline = device.createComputePipeline({
+                layout: device.createPipelineLayout({ bindGroupLayouts: [computeBindGroupLayout] }),
+                compute: { module: computeModule, entryPoint: 'main' },
+            });
+
+            const computeBindGroups = [
+                device.createBindGroup({
+                    layout: computeBindGroupLayout,
+                    entries: [
+                        { binding: 0, resource: { buffer: particleBuffers[0] } },
+                        { binding: 1, resource: { buffer: particleBuffers[1] } },
+                        { binding: 2, resource: { buffer: uniformBuffer } },
+                    ],
+                }),
+                device.createBindGroup({
+                    layout: computeBindGroupLayout,
+                    entries: [
+                        { binding: 0, resource: { buffer: particleBuffers[1] } },
+                        { binding: 1, resource: { buffer: particleBuffers[0] } },
+                        { binding: 2, resource: { buffer: uniformBuffer } },
+                    ],
+                }),
+            ];
+
+            // Render pipeline
+            const renderBindGroupLayout = device.createBindGroupLayout({
+                entries: [
+                    { binding: 0, visibility: GPUShaderStage.VERTEX, buffer: { type: 'uniform' } },
+                ],
+            });
+
+            const renderPipeline = device.createRenderPipeline({
+                layout: device.createPipelineLayout({ bindGroupLayouts: [renderBindGroupLayout] }),
+                vertex: {
+                    module: renderModule,
+                    entryPoint: 'vs',
+                    buffers: [{
+                        arrayStride: PARTICLE_STRIDE * 4,
+                        attributes: [
+                            { shaderLocation: 0, offset: 0, format: 'float32x2' },  // pos
+                            { shaderLocation: 1, offset: 8, format: 'float32x2' },  // vel
+                            { shaderLocation: 2, offset: 16, format: 'float32' },   // life
+                            { shaderLocation: 3, offset: 20, format: 'float32' },   // maxLife
+                            { shaderLocation: 4, offset: 24, format: 'float32' },   // size
+                            { shaderLocation: 5, offset: 28, format: 'float32' },   // pad
+                        ],
+                    }],
+                },
+                fragment: {
+                    module: renderModule,
+                    entryPoint: 'fs',
+                    targets: [{
+                        format,
+                        blend: {
+                            color: { srcFactor: 'src-alpha', dstFactor: 'one', operation: 'add' },
+                            alpha: { srcFactor: 'src-alpha', dstFactor: 'one', operation: 'add' },
+                        },
+                    }],
+                },
+                primitive: { topology: 'point-list' },
+            });
+
+            const renderBindGroup = device.createBindGroup({
+                layout: renderBindGroupLayout,
+                entries: [
+                    { binding: 0, resource: { buffer: uniformBuffer } },
+                ],
+            });
+
+            // Mouse tracking (page-level)
+            let mouseX = 0, mouseY = 0, mouseMoving = false;
+            let mouseTimeout;
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX * window.devicePixelRatio;
+                mouseY = e.clientY * window.devicePixelRatio;
+                mouseMoving = true;
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(function() { mouseMoving = false; }, 100);
+            });
+
+            let frame = 0;
+            let lastTime = performance.now();
+
+            function render() {
+                const now = performance.now();
+                const dt = Math.min((now - lastTime) / 1000, 0.05);
+                lastTime = now;
+
+                if (canvas.width !== window.innerWidth * window.devicePixelRatio ||
+                    canvas.height !== window.innerHeight * window.devicePixelRatio) {
+                    resize();
+                }
+
+                device.queue.writeBuffer(uniformBuffer, 0, new Float32Array([
+                    mouseX, mouseY,
+                    dt,
+                    mouseMoving ? 1.0 : 0.0,
+                    canvas.width, canvas.height,
+                    now / 1000,
+                    0
+                ]));
+
+                const pingPong = frame % 2;
+                const encoder = device.createCommandEncoder();
+
+                // Compute pass
+                const computePass = encoder.beginComputePass();
+                computePass.setPipeline(computePipeline);
+                computePass.setBindGroup(0, computeBindGroups[pingPong]);
+                computePass.dispatchWorkgroups(Math.ceil(NUM_PARTICLES / 64));
+                computePass.end();
+
+                // Render pass
+                const renderPass = encoder.beginRenderPass({
+                    colorAttachments: [{
+                        view: ctx.getCurrentTexture().createView(),
+                        clearValue: { r: 0, g: 0, b: 0, a: 0 },
+                        loadOp: 'clear',
+                        storeOp: 'store',
+                    }],
+                });
+                renderPass.setPipeline(renderPipeline);
+                renderPass.setBindGroup(0, renderBindGroup);
+                renderPass.setVertexBuffer(0, particleBuffers[1 - pingPong]);
+                renderPass.draw(NUM_PARTICLES);
+                renderPass.end();
+
+                device.queue.submit([encoder.finish()]);
+                frame++;
+                requestAnimationFrame(render);
+            }
+            render();
+        })();
+    </script>
+
+</body>
+</html>
