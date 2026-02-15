@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: V1_7_0 -->
+    <!-- App Version: V1_7_03 -->
     <style>
 
         
@@ -196,6 +196,10 @@
         .nav-dropdown-menu-inner a:hover {
             background: var(--surface-hover);
             color: var(--text-primary) !important;
+        }
+
+        .nav-dropdown-menu-inner a.mode-active {
+            color: #00d4ff !important;
         }
 
         .nav-dropdown-menu-inner .dropdown-tag {
@@ -1507,30 +1511,37 @@
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span>ITSWESSMITHYO</span> <span class="nav-app">artist site app</span> <span class="nav-version">[V1_7_0]</span></a>
+        <a href="#home" class="nav-brand"><span>ITSWESSMITHYO</span> <span class="nav-app">artist site app</span> <span class="nav-version">[V1_7_03]</span></a>
         <div class="nav-links">
-            <a href="#home">Home</a>
+            <a href="#home" data-i18n="nav_home">Home</a>
             <div class="nav-dropdown">
-                <a href="#neato">Neato</a>
+                <a href="#neato" data-i18n="nav_neato">Neato</a>
                 <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
-                    <a href="#neato-bass-cutter">Bass Cutter</a>
-                    <a href="#neato-brick-fitness">Brick Fitnesss</a>
-                    <a href="#neato-yobots">Yobots</a>
-                    <a href="#neato-yobotics">Yobotics</a>
-                    <a href="#neato-yomatics">Yomatics</a>
+                    <a href="#neato-bass-cutter" data-i18n="nav_sub_basscutter">Bass Cutter</a>
+                    <a href="#neato-brick-fitness" data-i18n="nav_sub_brickfitness">Brick Fitnesss</a>
+                    <a href="#neato-yobots" data-i18n="nav_sub_yobots">Yobots</a>
+                    <a href="#neato-yobotics" data-i18n="nav_sub_yobotics">Yobotics</a>
+                    <a href="#neato-yomatics" data-i18n="nav_sub_yomatics">Yomatics</a>
                 </div></div>
             </div>
             <div class="nav-dropdown">
-                <a href="#apps">Apps</a>
+                <a href="#apps" data-i18n="nav_apps">Apps</a>
                 <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
-                    <a href="#neato-onemanshyo">ONEMANSHYO</a>
-                    <a href="#neato-studiyo-partner">StudiYo Partner</a>
+                    <a href="#neato-onemanshyo" data-i18n="nav_sub_oms">ONEMANSHYO</a>
+                    <a href="#neato-studiyo-partner" data-i18n="nav_sub_sp">StudiYo Partner</a>
                 </div></div>
             </div>
-            <a href="#shop">Shop</a>
-            <a href="#about">About</a>
+            <a href="#shop" data-i18n="nav_shop">Shop</a>
+            <div class="nav-dropdown">
+                <a data-i18n="nav_language">Language</a>
+                <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
+                    <a onclick="applyMode('english');closeMobileNav();" class="mode-link mode-active" data-mode="english">English</a>
+                    <a onclick="applyMode('spanish');closeMobileNav();" class="mode-link" data-mode="spanish">Español</a>
+                </div></div>
+            </div>
+            <a href="#about" data-i18n="nav_about">About</a>
             <div class="nav-divider"></div>
-            <a href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank">Join Email List</a>
+            <a href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank" data-i18n="nav_emaillist">Join Email List</a>
         </div>
         <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -1557,23 +1568,23 @@
     <!-- CONTENT -->
     <div class="content">
         <!-- BIO -->
-        <h1 class="bio-greeting">Hi Friend, It's Wes Smith Yo!</h1>
+        <h1 class="bio-greeting" data-i18n="home_bio_greeting">Hi Friend, It's Wes Smith Yo!</h1>
 
         <p class="bio-text">
-            I'm an electronic dance music DJ & producer. My catalog of <strong>500+ songs</strong> spans multiple genres, 
+            <span data-i18n="home_bio_text">I'm an electronic dance music DJ & producer. My catalog of <strong>500+ songs</strong> spans multiple genres, 
             over <strong>7,000 days</strong> in Beatport top charts, a few #1's, and <strong>millions of plays</strong> 
             through video games on PlayStation, Xbox and music streaming platforms. I've spun for dance floors from NYC 
-            to India and hundreds of points in between. Thank you for your friendship, support & taking this ride with me.
+            to India and hundreds of points in between. Thank you for your friendship, support & taking this ride with me.</span>
         
-            <br><span class="bio-signoff">-see u on the dance floor-</span>
+            <br><span class="bio-signoff" data-i18n="home_bio_signoff">-see u on the dance floor-</span>
         </p>
     </div>
 
         <!-- MARQUEE -->
         <div class="marquee-bar">
             <div class="marquee-track">
-                <span class="marquee-item">Finally hit a million plays on a single song (<a href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spirit In The Sky - Burning Mon ReMix</a>). BIG hugs.</span>
-                <span class="marquee-item">My latest project is <a href="#neato-onemanshyo">ONEMANSHYO</a>. Live mixing + visuals. Check it all out on <a href="https://youtube.com/@ItsWesSmithYo" target="_blank">YouTube</a>.</span>
+                <span class="marquee-item" data-i18n="home_marquee_1">Finally hit a million plays on a single song (<a href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spirit In The Sky - Burning Mon ReMix</a>). BIG hugs.</span>
+                <span class="marquee-item" data-i18n="home_marquee_2">My latest project is <a href="#neato-onemanshyo">ONEMANSHYO</a>. Live mixing + visuals. Check it all out on <a href="https://youtube.com/@ItsWesSmithYo" target="_blank">YouTube</a>.</span>
             </div>
         </div>
 
@@ -1584,7 +1595,7 @@
 <div class="project-hero">
             <img src="img/home/home_banner.png" alt="Wes Smith">
         <div class="project-hero-text">
-            <h1 class="project-title">Apps</h1>
+            <h1 class="project-title" data-i18n="apps_hero_title">Apps</h1>
         </div>
     </div>
 
@@ -1592,12 +1603,12 @@
 
         <div class="app-grid">
             <a class="app-card app-card-img" href="#neato-onemanshyo" style="background-image:url('img/onemanshyo/OMS_hero_banner.png');">
-                <div class="app-name">ONEMANSHYO</div>
-                <div class="app-desc">Live electronic music performance combining DJ mixing and real-time audio-reactive visuals. WebGPU-powered. Single HTML file.</div>
+                <div class="app-name" data-i18n="apps_card_oms_name">ONEMANSHYO</div>
+                <div class="app-desc" data-i18n="apps_card_oms_desc">Live electronic music performance combining DJ mixing and real-time audio-reactive visuals. WebGPU-powered. Single HTML file.</div>
             </a>
             <a class="app-card app-card-img" href="#neato-studiyo-partner" style="background-image:url('img/studiyo-partner/StudiYoPartner_Icon_Borderless.png');">
-                <div class="app-name">StudiYo Partner</div>
-                <div class="app-desc">Custom GPT for music producers, DJs and creatives. Your AI studio companion on the OpenAI platform.</div>
+                <div class="app-name" data-i18n="apps_card_sp_name">StudiYo Partner</div>
+                <div class="app-desc" data-i18n="apps_card_sp_desc">Custom GPT for music producers, DJs and creatives. Your AI studio companion on the OpenAI platform.</div>
             </a>
         </div>
     </div>
@@ -1607,15 +1618,15 @@
 <div class="project-hero">
             <img src="img/bass-cutter/Basscutter_Numark_Banner.jpg" alt="Bass Cutter">
         <div class="project-hero-text">
-            <h1 class="project-title">Bass Cutter</h1>
+            <h1 class="project-title" data-i18n="bc_hero_title">Bass Cutter</h1>
         </div>
     </div>
 
     <div class="project-content">
 
         <div class="project-section">
-            <h2>About</h2>
-            <p class="project-text">
+            <h2 data-i18n="bc_h2_about">About</h2>
+            <p class="project-text" data-i18n="bc_about_text">
                 The Bass Cutter is a <strong>dual-purpose mobile DJ and lawn cutting rig</strong>. 
                 Because the grass won't cut itself and neither will the bass. Two versions have been built, 
                 each pushing the boundaries of yard maintenance and party delivery simultaneously.
@@ -1623,28 +1634,28 @@
         </div>
 
         <div class="project-section">
-            <h2>Version 1.0</h2>
-            <div class="project-spec"><strong>DJ Rig</strong> &mdash; Numark Mixstream Pro Go</div>
-            <div class="project-spec"><strong>Mower</strong> &mdash; GreenWorks electric push mower</div>
-            <p class="project-text">The original. Proved the concept that you can cut grass and drop bass at the same time.</p>
+            <h2 data-i18n="bc_h2_v1">Version 1.0</h2>
+            <div class="project-spec" data-i18n="bc_spec_v1_djrig"><strong>DJ Rig</strong> &mdash; Numark Mixstream Pro Go</div>
+            <div class="project-spec" data-i18n="bc_spec_v1_mower"><strong>Mower</strong> &mdash; GreenWorks electric push mower</div>
+            <p class="project-text" data-i18n="bc_v1_text">The original. Proved the concept that you can cut grass and drop bass at the same time.</p>
         </div>
 
         <div class="project-section">
-            <h2>Version 2.0 &mdash; DJ Lon Gai Signature Edition</h2>
-            <div class="project-spec"><strong>DJ Rig</strong> &mdash; Pioneer DJ Flex 4</div>
-            <div class="project-spec"><strong>Sound</strong> &mdash; JBL Boombox</div>
-            <p class="project-text">The upgraded edition. More power, more bass, same freshly cut lawn.</p>
+            <h2 data-i18n="bc_h2_v2">Version 2.0 &mdash; DJ Lon Gai Signature Edition</h2>
+            <div class="project-spec" data-i18n="bc_spec_v2_djrig"><strong>DJ Rig</strong> &mdash; Pioneer DJ Flex 4</div>
+            <div class="project-spec" data-i18n="bc_spec_v2_sound"><strong>Sound</strong> &mdash; JBL Boombox</div>
+            <p class="project-text" data-i18n="bc_v2_text">The upgraded edition. More power, more bass, same freshly cut lawn.</p>
         </div>
 
         <div class="project-section">
-            <h2>Gallery</h2>
+            <h2 data-i18n="common_h2_gallery">Gallery</h2>
             <div class="project-gallery">
                 <img src="img/bass-cutter/Basscutter_Numark_Banner.jpg" alt="Bass Cutter V1 Banner">
                 <img src="img/bass-cutter/Basscutter_Numark.jpeg" alt="Bass Cutter V1">
             </div>
         </div>
 
-        <a href="#home" class="project-back">&larr; Back to Home</a>
+        <a href="#home" class="project-back" data-i18n="common_back">&larr; Back to Home</a>
     </div>
     </section>
 
@@ -1652,34 +1663,34 @@
 <div class="project-hero">
             <img src="img/brick-fitness/BrickFitness_Rezzonate_Scene1.png" alt="Brick Fitnesss">
         <div class="project-hero-text">
-            <h1 class="project-title">Brick Fitnesss</h1>
+            <h1 class="project-title" data-i18n="bf_hero_title">Brick Fitnesss</h1>
         </div>
     </div>
 
     <div class="project-content">
 
         <div class="project-section">
-            <h2>About</h2>
-            <p class="project-text">
+            <h2 data-i18n="bf_h2_about">About</h2>
+            <p class="project-text" data-i18n="bf_about_text_1">
                 <strong>Brick Fitnesss</strong> (three S's) is the revolutionary fitness program 
                 for broke artists. The equipment? <strong>Standard bricks.</strong> 
                 No gym membership. No fancy equipment. Just you, gravity, and some bricks.
             </p>
-            <p class="project-text">
+            <p class="project-text" data-i18n="bf_about_text_2">
                 A satirical fitness program that proves you don't need expensive gear to stay in shape. 
                 Paired with curated workout playlists on Apple Music.
             </p>
         </div>
 
         <div class="project-section">
-            <h2>Gallery</h2>
+            <h2 data-i18n="common_h2_gallery">Gallery</h2>
             <div class="project-gallery">
                 <img src="img/brick-fitness/BrickFitness_Rezzonate_Scene1.png" alt="Brick Fitnesss Scene 1">
                 <img src="img/brick-fitness/BrickFitness_Rezzonate_Scene2.png" alt="Brick Fitnesss Scene 2">
             </div>
         </div>
 
-        <a href="#home" class="project-back">&larr; Back to Home</a>
+        <a href="#home" class="project-back" data-i18n="common_back">&larr; Back to Home</a>
     </div>
     </section>
 
@@ -1687,20 +1698,20 @@
 <div class="project-hero">
             <img src="img/onemanshyo/OMS_hero_banner.png" alt="ONEMANSHYO">
         <div class="project-hero-text">
-            <h1 class="project-title">ONEMANSHYO</h1>
+            <h1 class="project-title" data-i18n="oms_hero_title">ONEMANSHYO</h1>
         </div>
     </div>
 
     <div class="project-content">
 
         <div class="project-section">
-            <h2>About</h2>
-            <p class="project-text">
+            <h2 data-i18n="common_h2_about">About</h2>
+            <p class="project-text" data-i18n="oms_about_text_1">
                 ONEMANSHYO is an electronic music performance combining DJ mixing and live reactive visual mixing. 
                 Think of it as a <strong>one-person audio/visual show</strong> &mdash; live DJ set with real-time 
                 generated visuals that react to the music.
             </p>
-            <p class="project-text">
+            <p class="project-text" data-i18n="oms_about_text_2">
                 The custom app runs entirely in Chrome using <strong>WebGPU</strong> for shader rendering, 
                 <strong>Web Audio API</strong> for analysis and mixing, and the <strong>File System Access API</strong> 
                 for persistent library management. Zero installation. Single HTML file.
@@ -1708,27 +1719,27 @@
         </div>
 
         <div class="project-section">
-            <h2>App Features</h2>
-            <div class="project-spec"><strong>CREATE</strong> &mdash; Author WGSL fragment shaders with real-time preview, audio-reactive modulators (bass/mid/treble), FFT analysis, transform controls, and BumpR StickRs video overlays.</div>
-            <div class="project-spec"><strong>ORGANIZE</strong> &mdash; Library management with tagging, smart sets, search, and metadata editing. Containers package shader + audio + settings into portable .oms files.</div>
-            <div class="project-spec"><strong>PERFORM</strong> &mdash; 4-track mixer with 8 scenes, per-track EQ3, DJ FX, VFX, cue points, DSP compression, and quantized launching. Output composites to a pop-out window for live projection.</div>
-            <div class="project-spec"><strong>ADMIN</strong> &mdash; Audio card routing, camera/PIP configuration, BumpR StickRs management, effect pool assignments.</div>
+            <h2 data-i18n="oms_h2_features">App Features</h2>
+            <div class="project-spec" data-i18n="oms_spec_create"><strong>CREATE</strong> &mdash; Author WGSL fragment shaders with real-time preview, audio-reactive modulators (bass/mid/treble), FFT analysis, transform controls, and BumpR StickRs video overlays.</div>
+            <div class="project-spec" data-i18n="oms_spec_organize"><strong>ORGANIZE</strong> &mdash; Library management with tagging, smart sets, search, and metadata editing. Containers package shader + audio + settings into portable .oms files.</div>
+            <div class="project-spec" data-i18n="oms_spec_perform"><strong>PERFORM</strong> &mdash; 4-track mixer with 8 scenes, per-track EQ3, DJ FX, VFX, cue points, DSP compression, and quantized launching. Output composites to a pop-out window for live projection.</div>
+            <div class="project-spec" data-i18n="oms_spec_admin"><strong>ADMIN</strong> &mdash; Audio card routing, camera/PIP configuration, BumpR StickRs management, effect pool assignments.</div>
         </div>
 
         <div class="project-section">
-            <h2>Technical</h2>
-            <p class="project-text">
+            <h2 data-i18n="oms_h2_technical">Technical</h2>
+            <p class="project-text" data-i18n="oms_technical_text">
                 Optimized for <strong>Chrome on MacBook Pro 14"</strong>. Uses WebGPU for 60fps shader rendering across 4 simultaneous tracks, 
                 with real-time audio analysis driving visual reactivity through bandpass-filtered peak detection with ADSR envelopes.
             </p>
         </div>
 
         <div class="project-section">
-            <h2>Watch</h2>
-            <a href="https://youtube.com/playlist?list=PLPXUWVWXkUdrpdPKtIV15qKag8IqgHPG4&si=BoFcRIzg6Mq7B3z5" target="_blank" class="project-link magenta">YouTube Playlist &rarr;</a>
+            <h2 data-i18n="oms_h2_watch">Watch</h2>
+            <a href="https://youtube.com/playlist?list=PLPXUWVWXkUdrpdPKtIV15qKag8IqgHPG4&si=BoFcRIzg6Mq7B3z5" target="_blank" class="project-link magenta" data-i18n="oms_link_youtube">YouTube Playlist &rarr;</a>
         </div>
 
-        <a href="#home" class="project-back">&larr; Back to Home</a>
+        <a href="#home" class="project-back" data-i18n="common_back">&larr; Back to Home</a>
     </div>
     </section>
 
@@ -1736,15 +1747,15 @@
 <div class="project-hero">
             <img src="img/studiyo-partner/StudiYoPartner_Icon_Borderless.png" alt="StudiYo Partner">
         <div class="project-hero-text">
-            <h1 class="project-title">StudiYo Partner</h1>
+            <h1 class="project-title" data-i18n="sp_hero_title">StudiYo Partner</h1>
         </div>
     </div>
 
     <div class="project-content">
 
         <div class="project-section">
-            <h2>About</h2>
-            <p class="project-text">
+            <h2 data-i18n="common_h2_about">About</h2>
+            <p class="project-text" data-i18n="sp_about_text">
                 StudiYo Partner is a <strong>custom GPT</strong> on the OpenAI platform, purpose-built for 
                 music and visuals producers, DJs, and creatives. Created November 6, 2023 &mdash; your AI studio companion 
                 that understands the creative workflow.
@@ -1752,18 +1763,18 @@
         </div>
 
         <div class="project-section">
-            <h2>Try It</h2>
-            <a href="https://chatgpt.com/g/g-TCOFgCEBJ" target="_blank" class="project-link">Open StudiYo Partner on ChatGPT &rarr;</a>
+            <h2 data-i18n="sp_h2_tryit">Try It</h2>
+            <a href="https://chatgpt.com/g/g-TCOFgCEBJ" target="_blank" class="project-link" data-i18n="sp_link_chatgpt">Open StudiYo Partner on ChatGPT &rarr;</a>
         </div>
 
         <div class="project-section">
-            <h2>Gallery</h2>
+            <h2 data-i18n="common_h2_gallery">Gallery</h2>
             <div class="project-gallery">
                 <img src="img/studiyo-partner/StudiYoPartner_Icon_Borderless.png" alt="StudiYo Partner">
             </div>
         </div>
 
-        <a href="#home" class="project-back">&larr; Back to Home</a>
+        <a href="#home" class="project-back" data-i18n="common_back">&larr; Back to Home</a>
     </div>
     </section>
 
@@ -1771,15 +1782,15 @@
 <div class="project-hero">
             <img src="img/yobotics/Yobotics_Banner.png" alt="Yobotics">
         <div class="project-hero-text">
-            <h1 class="project-title">Yobotics</h1>
+            <h1 class="project-title" data-i18n="yobotics_hero_title">Yobotics</h1>
         </div>
     </div>
 
     <div class="project-content">
 
         <div class="project-section">
-            <h2>About</h2>
-            <p class="project-text">
+            <h2 data-i18n="common_h2_about">About</h2>
+            <p class="project-text" data-i18n="yobotics_about_text">
                 Yobotics is a concept exploring <strong>robotic systems and automation</strong> 
                 in music creation, performance, and live visuals. The intersection of 
                 MIDI/DAW integration, automated stage elements, and interactive art installations.
@@ -1787,21 +1798,21 @@
         </div>
 
         <div class="project-section">
-            <h2>Concepts</h2>
-            <div class="project-spec"><strong>MIDI/DAW Integration</strong> &mdash; Robotic systems controlled by music production software</div>
-            <div class="project-spec"><strong>Automated Stages</strong> &mdash; Kinetic stage elements that respond to performance</div>
-            <div class="project-spec"><strong>Interactive Art</strong> &mdash; Installations that blur the line between audience and performer</div>
+            <h2 data-i18n="yobotics_h2_concepts">Concepts</h2>
+            <div class="project-spec" data-i18n="yobotics_spec_midi"><strong>MIDI/DAW Integration</strong> &mdash; Robotic systems controlled by music production software</div>
+            <div class="project-spec" data-i18n="yobotics_spec_stages"><strong>Automated Stages</strong> &mdash; Kinetic stage elements that respond to performance</div>
+            <div class="project-spec" data-i18n="yobotics_spec_art"><strong>Interactive Art</strong> &mdash; Installations that blur the line between audience and performer</div>
         </div>
 
         <div class="project-section">
-            <h2>Gallery</h2>
+            <h2 data-i18n="common_h2_gallery">Gallery</h2>
             <div class="project-gallery">
                 <img src="img/yobotics/Yobotics_Banner.png" alt="Yobotics Banner">
                 <img src="img/yobotics/Yobotics_Webs.png" alt="Yobotics Web">
             </div>
         </div>
 
-        <a href="#home" class="project-back">&larr; Back to Home</a>
+        <a href="#home" class="project-back" data-i18n="common_back">&larr; Back to Home</a>
     </div>
     </section>
 
@@ -1809,15 +1820,15 @@
 <div class="project-hero">
             <img src="img/yobots/YoBotz_BurningMan_LEDDay1.jpg" alt="Yobots">
         <div class="project-hero-text">
-            <h1 class="project-title">Yobots</h1>
+            <h1 class="project-title" data-i18n="yobots_hero_title">Yobots</h1>
         </div>
     </div>
 
     <div class="project-content">
 
         <div class="project-section">
-            <h2>About</h2>
-            <p class="project-text">
+            <h2 data-i18n="common_h2_about">About</h2>
+            <p class="project-text" data-i18n="yobots_about_text">
                 <strong>Squint &amp; Wowzer</strong> are LED art installations born in 2015. 
                 PVC geodesic domes wrapped in LEDs with audio sensors and topped with laser-cut headphone structures. 
                 They received a <strong>Burning Man regional project grant in 2016</strong>.
@@ -1825,15 +1836,15 @@
         </div>
 
         <div class="project-section">
-            <h2>Build Details</h2>
-            <div class="project-spec"><strong>Structure</strong> &mdash; PVC geodesic domes</div>
-            <div class="project-spec"><strong>Lighting</strong> &mdash; LED strips with audio-reactive sensors</div>
-            <div class="project-spec"><strong>Topper</strong> &mdash; Laser-cut headphone structures</div>
-            <div class="project-spec"><strong>Grant</strong> &mdash; Burning Man regional project grant, 2016</div>
+            <h2 data-i18n="yobots_h2_build">Build Details</h2>
+            <div class="project-spec" data-i18n="yobots_spec_structure"><strong>Structure</strong> &mdash; PVC geodesic domes</div>
+            <div class="project-spec" data-i18n="yobots_spec_lighting"><strong>Lighting</strong> &mdash; LED strips with audio-reactive sensors</div>
+            <div class="project-spec" data-i18n="yobots_spec_topper"><strong>Topper</strong> &mdash; Laser-cut headphone structures</div>
+            <div class="project-spec" data-i18n="yobots_spec_grant"><strong>Grant</strong> &mdash; Burning Man regional project grant, 2016</div>
         </div>
 
         <div class="project-section">
-            <h2>Gallery</h2>
+            <h2 data-i18n="common_h2_gallery">Gallery</h2>
             <div class="project-gallery">
                 <img src="img/yobots/YoBotz_BurningMan_CamoNet.jpg" alt="Yobots at Burning Man - Camo Net">
                 <img src="img/yobots/YoBotz_BurningMan_LEDDay1.jpg" alt="Yobots LED Day 1">
@@ -1845,7 +1856,7 @@
             </div>
         </div>
 
-        <a href="#home" class="project-back">&larr; Back to Home</a>
+        <a href="#home" class="project-back" data-i18n="common_back">&larr; Back to Home</a>
     </div>
     </section>
 
@@ -1853,20 +1864,20 @@
 <div class="project-hero">
             <img src="img/yomatics/Yomatics_Donkey.png" alt="Yomatics">
         <div class="project-hero-text">
-            <h1 class="project-title">Yomatics</h1>
+            <h1 class="project-title" data-i18n="yomatics_hero_title">Yomatics</h1>
         </div>
     </div>
 
     <div class="project-content">
 
         <div class="project-section">
-            <h2>About</h2>
-            <p class="project-text">
+            <h2 data-i18n="common_h2_about">About</h2>
+            <p class="project-text" data-i18n="yomatics_about_text_1">
                 Yomatics explores <strong>cymatics</strong> &mdash; making sound vibrations visible. 
                 Water and materials react to electronic dance music frequencies in real-time, 
                 creating visual patterns that reveal the physical nature of sound.
             </p>
-            <p class="project-text">
+            <p class="project-text" data-i18n="yomatics_about_text_2">
                 Different frequencies create different geometric patterns. Bass frequencies produce 
                 large, slow-moving waves. Higher frequencies create intricate, detailed structures. 
                 The result is a direct, physical visualization of music.
@@ -1874,14 +1885,14 @@
         </div>
 
         <div class="project-section">
-            <h2>Gallery</h2>
+            <h2 data-i18n="common_h2_gallery">Gallery</h2>
             <div class="project-gallery">
                 <img src="img/yomatics/Yomatics_Donkey.png" alt="Yomatics">
                 <img src="img/yomatics/Yomatics-Live_2024-10-08.png" alt="Yomatics Live">
             </div>
         </div>
 
-        <a href="#home" class="project-back">&larr; Back to Home</a>
+        <a href="#home" class="project-back" data-i18n="common_back">&larr; Back to Home</a>
     </div>
     </section>
 
@@ -1889,7 +1900,7 @@
 <div class="project-hero">
             <img src="img/home/home_banner.png" alt="Wes Smith">
         <div class="project-hero-text">
-            <h1 class="project-title">Neato</h1>
+            <h1 class="project-title" data-i18n="neato_hero_title">Neato</h1>
         </div>
     </div>
 
@@ -1897,24 +1908,24 @@
 
         <div class="app-grid">
             <a class="app-card app-card-img" href="#neato-bass-cutter" style="background-image:url('img/bass-cutter/Basscutter_Numark_Banner.jpg');">
-                <div class="app-name">Bass Cutter</div>
-                <div class="app-desc">Dual-purpose mobile DJ and lawn cutting rig. Because the grass won't cut itself and neither will the bass.</div>
+                <div class="app-name" data-i18n="neato_card_bc_name">Bass Cutter</div>
+                <div class="app-desc" data-i18n="neato_card_bc_desc">Dual-purpose mobile DJ and lawn cutting rig. Because the grass won't cut itself and neither will the bass.</div>
             </a>
             <a class="app-card app-card-img" href="#neato-brick-fitness" style="background-image:url('img/brick-fitness/BrickFitness_Rezzonate_Scene1.png');">
-                <div class="app-name">Brick Fitnesss</div>
-                <div class="app-desc">The revolutionary fitness program for broke artists. Standard bricks. No gym required. Three S's.</div>
+                <div class="app-name" data-i18n="neato_card_bf_name">Brick Fitnesss</div>
+                <div class="app-desc" data-i18n="neato_card_bf_desc">The revolutionary fitness program for broke artists. Standard bricks. No gym required. Three S's.</div>
             </a>
             <a class="app-card app-card-img" href="#neato-yobots" style="background-image:url('img/yobots/YoBotz_BurningMan_LEDDay1.jpg');">
-                <div class="app-name">Yobots</div>
-                <div class="app-desc">Squint &amp; Wowzer: LED art installations. PVC domes, audio sensors, laser-cut headphones. Burning Man 2016.</div>
+                <div class="app-name" data-i18n="neato_card_yobots_name">Yobots</div>
+                <div class="app-desc" data-i18n="neato_card_yobots_desc">Squint &amp; Wowzer: LED art installations. PVC domes, audio sensors, laser-cut headphones. Burning Man 2016.</div>
             </a>
             <a class="app-card app-card-img" href="#neato-yobotics" style="background-image:url('img/yobotics/Yobotics_Banner.png');">
-                <div class="app-name">Yobotics</div>
-                <div class="app-desc">Exploring robotic systems and automation in music creation, performance, and live visuals.</div>
+                <div class="app-name" data-i18n="neato_card_yobotics_name">Yobotics</div>
+                <div class="app-desc" data-i18n="neato_card_yobotics_desc">Exploring robotic systems and automation in music creation, performance, and live visuals.</div>
             </a>
             <a class="app-card app-card-img" href="#neato-yomatics" style="background-image:url('img/yomatics/Yomatics_Donkey.png');">
-                <div class="app-name">Yomatics</div>
-                <div class="app-desc">Making sound visible. Cymatics exploration where water and materials react to electronic dance music in real-time.</div>
+                <div class="app-name" data-i18n="neato_card_yomatics_name">Yomatics</div>
+                <div class="app-desc" data-i18n="neato_card_yomatics_desc">Making sound visible. Cymatics exploration where water and materials react to electronic dance music in real-time.</div>
             </a>
         </div>
 
@@ -1925,8 +1936,8 @@
 <div class="project-hero">
             <img src="img/home/home_banner.png" alt="Wes Smith">
         <div class="project-hero-text">
-            <h1 class="project-title">Yodega</h1>
-            <p class="page-subtitle" style="color:#aaa;margin-top:4px;">Yo + Bodega</p>
+            <h1 class="project-title" data-i18n="shop_hero_title">Yodega</h1>
+            <p class="page-subtitle" style="color:#aaa;margin-top:4px;" data-i18n="shop_hero_subtitle">Yo + Bodega</p>
         </div>
     </div>
 
@@ -1934,14 +1945,14 @@
 
         <div class="app-grid">
             <a class="app-card app-card-img" href="https://itswessmithyo.myshopify.com/" target="_blank" style="background-image:url('img/shop/shop_yocap_green.png');">
-                <div class="app-name">Shop</div>
-                <div class="app-desc">All of my merch is tested by me, worn by me &mdash; it's the same goods you see in all my videos. I use <strong>Printful</strong> to handle on-demand manufacturing and <strong>Shopify</strong>.<br><br><em>-thanks for your support-</em></div>
-                <div style="margin-top:auto;text-align:right;position:relative;z-index:2;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">Visit the Yodega &rarr;</span></div>
+                <div class="app-name" data-i18n="shop_card_shop_name">Shop</div>
+                <div class="app-desc" data-i18n="shop_card_shop_desc">All of my merch is tested by me, worn by me &mdash; it's the same goods you see in all my videos. I use <strong>Printful</strong> to handle on-demand manufacturing and <strong>Shopify</strong>.<br><br><em>-thanks for your support-</em></div>
+                <div style="margin-top:auto;text-align:right;position:relative;z-index:2;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;" data-i18n="shop_btn_shop">Visit the Yodega &rarr;</span></div>
             </a>
             <a class="app-card app-card-img" href="https://www.youtube.com/@ItsWesSmithYo" target="_blank" style="background-image:url('img/shop/shop_yocap_rooster.png');">
-                <div class="app-name">Support</div>
-                <div class="app-desc">Drop a Super Thanks, subscribe, or just come hang out.</div>
-                <div style="margin-top:auto;text-align:right;position:relative;z-index:2;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;">YouTube &rarr;</span></div>
+                <div class="app-name" data-i18n="shop_card_support_name">Support</div>
+                <div class="app-desc" data-i18n="shop_card_support_desc">Drop a Super Thanks, subscribe, or just come hang out.</div>
+                <div style="margin-top:auto;text-align:right;position:relative;z-index:2;"><span style="display:inline-block;padding:8px 16px;background:rgba(255,255,255,0.05);color:#00d4ff;font-size:13px;font-weight:600;" data-i18n="shop_btn_support">YouTube &rarr;</span></div>
             </a>
         </div>
 
@@ -1952,8 +1963,8 @@
 <div class="project-hero">
             <img src="img/home/home_banner.png" alt="Wes Smith">
         <div class="project-hero-text">
-            <h1 class="project-title">About This Site</h1>
-            <p style="color:#aaa;margin-top:4px;font-size:13px;">A Music Tools Project &mdash; Part of the YoTeam! Ecosystem</p>
+            <h1 class="project-title" data-i18n="about_hero_title">About This Site</h1>
+            <p style="color:#aaa;margin-top:4px;font-size:13px;" data-i18n="about_hero_subtitle">A Music Tools Project &mdash; Part of the YoTeam! Ecosystem</p>
         </div>
     </div>
 
@@ -1961,40 +1972,40 @@
 
         <div class="app-grid">
             <div class="about-section" style="height:200px;margin-bottom:0;">
-                <div class="about-section-title">Application</div>
+                <div class="about-section-title" data-i18n="about_section_application">Application</div>
                 <div class="about-row">
-                    <span class="about-row-label">App</span>
-                    <span class="about-row-value">ITSWESSMITHYO Artist Site</span>
+                    <span class="about-row-label" data-i18n="about_label_app">App</span>
+                    <span class="about-row-value" data-i18n="about_value_app">ITSWESSMITHYO Artist Site</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">Version</span>
-                    <span class="about-row-value">V1_7_0</span>
+                    <span class="about-row-label" data-i18n="about_label_version">Version</span>
+                    <span class="about-row-value">V1_7_03</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">License</span>
-                    <span class="about-row-value">GPL-3.0</span>
+                    <span class="about-row-label" data-i18n="about_label_license">License</span>
+                    <span class="about-row-value" data-i18n="about_value_license">GPL-3.0</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">Author</span>
-                    <span class="about-row-value">Wes Smith</span>
+                    <span class="about-row-label" data-i18n="about_label_author">Author</span>
+                    <span class="about-row-value" data-i18n="about_value_author">Wes Smith</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">Built With</span>
-                    <span class="about-row-value">Claude AI &mdash; Anthropic</span>
+                    <span class="about-row-label" data-i18n="about_label_builtwith">Built With</span>
+                    <span class="about-row-value" data-i18n="about_value_builtwith">Claude AI &mdash; Anthropic</span>
                 </div>
             </div>
             <div class="about-section" style="height:200px;margin-bottom:0;">
-                <div class="about-section-title">Technology</div>
+                <div class="about-section-title" data-i18n="about_section_technology">Technology</div>
                 <div class="about-row">
-                    <span class="about-row-label">Architecture</span>
-                    <span class="about-row-value">Single HTML File &mdash; No Frameworks, No Build Tools</span>
+                    <span class="about-row-label" data-i18n="about_label_architecture">Architecture</span>
+                    <span class="about-row-value" data-i18n="about_value_architecture">Single HTML File &mdash; No Frameworks, No Build Tools</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">Platform</span>
-                    <span class="about-row-value">Chrome &mdash; WebGPU Required</span>
+                    <span class="about-row-label" data-i18n="about_label_platform">Platform</span>
+                    <span class="about-row-value" data-i18n="about_value_platform">Chrome &mdash; WebGPU Required</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">APIs</span>
+                    <span class="about-row-label" data-i18n="about_label_apis">APIs</span>
                     <span class="about-row-value">
                         <span class="about-tag cyan">WebGPU</span>
                         <span class="about-tag purple">WGSL</span>
@@ -2003,40 +2014,40 @@
                     </span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">Shaders</span>
-                    <span class="about-row-value">Banner Pixelation &amp; Particle Cursor Trail</span>
+                    <span class="about-row-label" data-i18n="about_label_shaders">Shaders</span>
+                    <span class="about-row-value" data-i18n="about_value_shaders">Banner Pixelation &amp; Particle Cursor Trail</span>
                 </div>
             </div>
         </div>
 
         <div class="app-grid">
             <div class="about-section" style="height:200px;margin-bottom:0;">
-                <div class="about-section-title">Music Tools Ecosystem</div>
+                <div class="about-section-title" data-i18n="about_section_ecosystem">Music Tools Ecosystem</div>
                 <div class="about-row">
-                    <span class="about-row-label">ONEMANSHYO</span>
-                    <span class="about-row-value">WebGPU Audio-Reactive Visual Performance</span>
+                    <span class="about-row-label" data-i18n="about_label_oms">ONEMANSHYO</span>
+                    <span class="about-row-value" data-i18n="about_value_oms">WebGPU Audio-Reactive Visual Performance</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">StudiYo Partner</span>
-                    <span class="about-row-value">Music Production Project Management</span>
+                    <span class="about-row-label" data-i18n="about_label_sp">StudiYo Partner</span>
+                    <span class="about-row-value" data-i18n="about_value_sp">Music Production Project Management</span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">Artist Site</span>
-                    <span class="about-row-value">This App &mdash; WebGPU-Enhanced Artist Portfolio</span>
+                    <span class="about-row-label" data-i18n="about_label_artistsite">Artist Site</span>
+                    <span class="about-row-value" data-i18n="about_value_artistsite">This App &mdash; WebGPU-Enhanced Artist Portfolio</span>
                 </div>
             </div>
             <div class="about-section" style="height:200px;margin-bottom:0;">
-                <div class="about-section-title">Links</div>
+                <div class="about-section-title" data-i18n="about_section_links">Links</div>
                 <div class="about-row">
-                    <span class="about-row-label">GitHub</span>
+                    <span class="about-row-label" data-i18n="about_label_github">GitHub</span>
                     <span class="about-row-value"><a href="https://github.com/itswessmithyo" target="_blank">github.com/itswessmithyo</a></span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">YouTube</span>
+                    <span class="about-row-label" data-i18n="about_label_youtube">YouTube</span>
                     <span class="about-row-value"><a href="https://www.youtube.com/@ItsWesSmithYo" target="_blank">@ItsWesSmithYo</a></span>
                 </div>
                 <div class="about-row">
-                    <span class="about-row-label">Email List</span>
+                    <span class="about-row-label" data-i18n="about_label_email">Email List</span>
                     <span class="about-row-value"><a href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank">Subscribe</a></span>
                 </div>
             </div>
@@ -2050,27 +2061,27 @@
     <footer>
         <div class="footer-columns">
             <div class="footer-col">
-                <div class="footer-col-header">Official</div>
-                <a class="footer-card" href="https://itswessmithyo.com" target="_blank">Website</a>
-                <a class="footer-card" href="https://www.dropbox.com/sh/pbc6jpslcpyio8l/AADAw4W7Dv14cPPUzhuxpTDBa?dl=0" target="_blank">EPK</a>
-                <a class="footer-card" href="https://www.youtube.com/@ItsWesSmithYo/posts" target="_blank">Blog</a>
-                <a class="footer-card" href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank">Email List</a>
-                <a class="footer-card" href="https://itswessmithyo.myshopify.com/" target="_blank">Yodega / Shop</a>
+                <div class="footer-col-header" data-i18n="footer_header_official">Official</div>
+                <a class="footer-card" href="https://itswessmithyo.com" target="_blank" data-i18n="footer_link_website">Website</a>
+                <a class="footer-card" href="https://www.dropbox.com/sh/pbc6jpslcpyio8l/AADAw4W7Dv14cPPUzhuxpTDBa?dl=0" target="_blank" data-i18n="footer_link_epk">EPK</a>
+                <a class="footer-card" href="https://www.youtube.com/@ItsWesSmithYo/posts" target="_blank" data-i18n="footer_link_blog">Blog</a>
+                <a class="footer-card" href="https://itswessmithyo.us13.list-manage.com/subscribe?u=3edbf507684eb13f466f2b6a0&id=f85a66f0a4" target="_blank" data-i18n="footer_link_emaillist">Email List</a>
+                <a class="footer-card" href="https://itswessmithyo.myshopify.com/" target="_blank" data-i18n="footer_link_yodega">Yodega / Shop</a>
             </div>
             <div class="footer-col">
-                <div class="footer-col-header">Music &amp; Visuals</div>
-                <a class="footer-card" href="https://www.youtube.com/@ItsWesSmithYo/" target="_blank">YouTube</a>
-                <a class="footer-card" href="https://music.apple.com/us/artist/wes-smith/299074273" target="_blank">Apple Music</a>
-                <a class="footer-card" href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spotify</a>
-                <a class="footer-card" href="https://www.beatport.com/artist/wes-smith/190219" target="_blank">Beatport</a>
-                <a class="footer-card" href="https://soundcloud.com/itswessmithyo" target="_blank">SoundCloud</a>
+                <div class="footer-col-header" data-i18n="footer_header_music">Music &amp; Visuals</div>
+                <a class="footer-card" href="https://www.youtube.com/@ItsWesSmithYo/" target="_blank" data-i18n="footer_link_youtube">YouTube</a>
+                <a class="footer-card" href="https://music.apple.com/us/artist/wes-smith/299074273" target="_blank" data-i18n="footer_link_applemusic">Apple Music</a>
+                <a class="footer-card" href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank" data-i18n="footer_link_spotify">Spotify</a>
+                <a class="footer-card" href="https://www.beatport.com/artist/wes-smith/190219" target="_blank" data-i18n="footer_link_beatport">Beatport</a>
+                <a class="footer-card" href="https://soundcloud.com/itswessmithyo" target="_blank" data-i18n="footer_link_soundcloud">SoundCloud</a>
             </div>
             <div class="footer-col">
-                <div class="footer-col-header">Socials</div>
-                <a class="footer-card" href="https://x.com/ItsWesSmithYo" target="_blank">X / Twitter</a>
-                <a class="footer-card" href="https://www.instagram.com/itswessmithyo/" target="_blank">Instagram</a>
-                <a class="footer-card" href="https://www.tiktok.com/@itswessmithyo" target="_blank">TikTok</a>
-                <a class="footer-card" href="https://www.threads.com/@itswessmithyo" target="_blank">Threads</a>
+                <div class="footer-col-header" data-i18n="footer_header_socials">Socials</div>
+                <a class="footer-card" href="https://x.com/ItsWesSmithYo" target="_blank" data-i18n="footer_link_twitter">X / Twitter</a>
+                <a class="footer-card" href="https://www.instagram.com/itswessmithyo/" target="_blank" data-i18n="footer_link_instagram">Instagram</a>
+                <a class="footer-card" href="https://www.tiktok.com/@itswessmithyo" target="_blank" data-i18n="footer_link_tiktok">TikTok</a>
+                <a class="footer-card" href="https://www.threads.com/@itswessmithyo" target="_blank" data-i18n="footer_link_threads">Threads</a>
             </div>
             </div>
         </div>
@@ -2380,7 +2391,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - V1_7_0 */
+        /* Banner WebGPU Pixelation Shader - V1_7_03 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2567,7 +2578,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - V1_7_0 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - V1_7_03 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
@@ -2877,6 +2888,321 @@
             }
             render();
         })();
+    
+
+    // ============================================================
+    // CONTENT PACK SYSTEM
+    // ============================================================
+
+    var CONTENT = {
+      english: {
+        // --- NAV ---
+        nav_home: 'Home',
+        nav_neato: 'Neato',
+        nav_apps: 'Apps',
+        nav_shop: 'Shop',
+        nav_about: 'About',
+        nav_language: 'Language',
+        nav_emaillist: 'Join Email List',
+        nav_sub_basscutter: 'Bass Cutter',
+        nav_sub_brickfitness: 'Brick Fitnesss',
+        nav_sub_yobots: 'Yobots',
+        nav_sub_yobotics: 'Yobotics',
+        nav_sub_yomatics: 'Yomatics',
+        nav_sub_oms: 'ONEMANSHYO',
+        nav_sub_sp: 'StudiYo Partner',
+
+        // --- HOME ---
+        home_bio_greeting: "Hi Friend, It\'s Wes Smith Yo!",
+        home_bio_text: 'I\'m an electronic dance music DJ &amp; producer. My catalog of <strong>500+ songs</strong> spans multiple genres, over <strong>7,000 days</strong> in Beatport top charts, a few #1\'s, and <strong>millions of plays</strong> through video games on PlayStation, Xbox and music streaming platforms. I\'ve spun for dance floors from NYC to India and hundreds of points in between. Thank you for your friendship, support &amp; taking this ride with me.',
+        home_bio_signoff: '-see u on the dance floor-',
+        home_marquee_1: 'Finally hit a million plays on a single song (<a href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spirit In The Sky - Burning Mon ReMix</a>). BIG hugs.',
+        home_marquee_2: 'My latest project is <a href="#neato-onemanshyo">ONEMANSHYO</a>. Live mixing + visuals. Check it all out on <a href="https://youtube.com/@ItsWesSmithYo" target="_blank">YouTube</a>.',
+
+        // --- APPS ROOT ---
+        apps_hero_title: 'Apps',
+        apps_card_oms_name: 'ONEMANSHYO',
+        apps_card_oms_desc: 'Live electronic music performance combining DJ mixing and real-time audio-reactive visuals. WebGPU-powered. Single HTML file.',
+        apps_card_sp_name: 'StudiYo Partner',
+        apps_card_sp_desc: 'Custom GPT for music producers, DJs and creatives. Your AI studio companion on the OpenAI platform.',
+
+        // --- NEATO ROOT ---
+        neato_hero_title: 'Neato',
+        neato_card_bc_name: 'Bass Cutter',
+        neato_card_bc_desc: 'Dual-purpose mobile DJ and lawn cutting rig. Because the grass won\'t cut itself and neither will the bass.',
+        neato_card_bf_name: 'Brick Fitnesss',
+        neato_card_bf_desc: 'The revolutionary fitness program for broke artists. Standard bricks. No gym required. Three S\'s.',
+        neato_card_yobots_name: 'Yobots',
+        neato_card_yobots_desc: 'Squint &amp; Wowzer: LED art installations. PVC domes, audio sensors, laser-cut headphones. Burning Man 2016.',
+        neato_card_yobotics_name: 'Yobotics',
+        neato_card_yobotics_desc: 'Exploring robotic systems and automation in music creation, performance, and live visuals.',
+        neato_card_yomatics_name: 'Yomatics',
+        neato_card_yomatics_desc: 'Making sound visible. Cymatics exploration where water and materials react to electronic dance music in real-time.',
+
+        // --- BASS CUTTER SUB ---
+        bc_hero_title: 'Bass Cutter',
+        bc_h2_about: 'About',
+        bc_about_text: 'The Bass Cutter is a <strong>dual-purpose mobile DJ and lawn cutting rig</strong>. Because the grass won\'t cut itself and neither will the bass. Two versions have been built, each pushing the boundaries of yard maintenance and party delivery simultaneously.',
+        bc_h2_v1: 'Version 1.0',
+        bc_spec_v1_djrig: '<strong>DJ Rig</strong> &mdash; Numark Mixstream Pro Go',
+        bc_spec_v1_mower: '<strong>Mower</strong> &mdash; GreenWorks electric push mower',
+        bc_v1_text: 'The original. Proved the concept that you can cut grass and drop bass at the same time.',
+        bc_h2_v2: 'Version 2.0 &mdash; DJ Lon Gai Signature Edition',
+        bc_spec_v2_djrig: '<strong>DJ Rig</strong> &mdash; Pioneer DJ Flex 4',
+        bc_spec_v2_sound: '<strong>Sound</strong> &mdash; JBL Boombox',
+        bc_v2_text: 'The upgraded edition. More power, more bass, same freshly cut lawn.',
+
+        // --- BRICK FITNESS SUB ---
+        bf_hero_title: 'Brick Fitnesss',
+        bf_h2_about: 'About',
+        bf_about_text_1: '<strong>Brick Fitnesss</strong> (three S\'s) is the revolutionary fitness program for broke artists. The equipment? <strong>Standard bricks.</strong> No gym membership. No fancy equipment. Just you, gravity, and some bricks.',
+        bf_about_text_2: 'A satirical fitness program that proves you don\'t need expensive gear to stay in shape. Paired with curated workout playlists on Apple Music.',
+
+        // --- ONEMANSHYO SUB ---
+        oms_hero_title: 'ONEMANSHYO',
+        oms_about_text_1: 'ONEMANSHYO is an electronic music performance combining DJ mixing and live reactive visual mixing. Think of it as a <strong>one-person audio/visual show</strong> &mdash; live DJ set with real-time generated visuals that react to the music.',
+        oms_about_text_2: 'The custom app runs entirely in Chrome using <strong>WebGPU</strong> for shader rendering, <strong>Web Audio API</strong> for analysis and mixing, and the <strong>File System Access API</strong> for persistent library management. Zero installation. Single HTML file.',
+        oms_h2_features: 'App Features',
+        oms_spec_create: '<strong>CREATE</strong> &mdash; Author WGSL fragment shaders with real-time preview, audio-reactive modulators (bass/mid/treble), FFT analysis, transform controls, and BumpR StickRs video overlays.',
+        oms_spec_organize: '<strong>ORGANIZE</strong> &mdash; Library management with tagging, smart sets, search, and metadata editing. Containers package shader + audio + settings into portable .oms files.',
+        oms_spec_perform: '<strong>PERFORM</strong> &mdash; 4-track mixer with 8 scenes, per-track EQ3, DJ FX, VFX, cue points, DSP compression, and quantized launching. Output composites to a pop-out window for live projection.',
+        oms_spec_admin: '<strong>ADMIN</strong> &mdash; Audio card routing, camera/PIP configuration, BumpR StickRs management, effect pool assignments.',
+        oms_h2_technical: 'Technical',
+        oms_technical_text: 'Optimized for <strong>Chrome on MacBook Pro 14\"</strong>. Uses WebGPU for 60fps shader rendering across 4 simultaneous tracks, with real-time audio analysis driving visual reactivity through bandpass-filtered peak detection with ADSR envelopes.',
+        oms_h2_watch: 'Watch',
+        oms_link_youtube: 'YouTube Playlist &rarr;',
+
+        // --- STUDIYO PARTNER SUB ---
+        sp_hero_title: 'StudiYo Partner',
+        sp_about_text: 'StudiYo Partner is a <strong>custom GPT</strong> on the OpenAI platform, purpose-built for music and visuals producers, DJs, and creatives. Created November 6, 2023 &mdash; your AI studio companion that understands the creative workflow.',
+        sp_h2_tryit: 'Try It',
+        sp_link_chatgpt: 'Open StudiYo Partner on ChatGPT &rarr;',
+
+        // --- YOBOTICS SUB ---
+        yobotics_hero_title: 'Yobotics',
+        yobotics_about_text: 'Yobotics is a concept exploring <strong>robotic systems and automation</strong> in music creation, performance, and live visuals. The intersection of MIDI/DAW integration, automated stage elements, and interactive art installations.',
+        yobotics_h2_concepts: 'Concepts',
+        yobotics_spec_midi: '<strong>MIDI/DAW Integration</strong> &mdash; Robotic systems controlled by music production software',
+        yobotics_spec_stages: '<strong>Automated Stages</strong> &mdash; Kinetic stage elements that respond to performance',
+        yobotics_spec_art: '<strong>Interactive Art</strong> &mdash; Installations that blur the line between audience and performer',
+
+        // --- YOBOTS SUB ---
+        yobots_hero_title: 'Yobots',
+        yobots_about_text: '<strong>Squint &amp; Wowzer</strong> are LED art installations born in 2015. PVC geodesic domes wrapped in LEDs with audio sensors and topped with laser-cut headphone structures. They received a <strong>Burning Man regional project grant in 2016</strong>.',
+        yobots_h2_build: 'Build Details',
+        yobots_spec_structure: '<strong>Structure</strong> &mdash; PVC geodesic domes',
+        yobots_spec_lighting: '<strong>Lighting</strong> &mdash; LED strips with audio-reactive sensors',
+        yobots_spec_topper: '<strong>Topper</strong> &mdash; Laser-cut headphone structures',
+        yobots_spec_grant: '<strong>Grant</strong> &mdash; Burning Man regional project grant, 2016',
+
+        // --- YOMATICS SUB ---
+        yomatics_hero_title: 'Yomatics',
+        yomatics_about_text_1: 'Yomatics explores <strong>cymatics</strong> &mdash; making sound vibrations visible. Water and materials react to electronic dance music frequencies in real-time, creating visual patterns that reveal the physical nature of sound.',
+        yomatics_about_text_2: 'Different frequencies create different geometric patterns. Bass frequencies produce large, slow-moving waves. Higher frequencies create intricate, detailed structures. The result is a direct, physical visualization of music.',
+
+        // --- SHOP ---
+        shop_hero_title: 'Yodega',
+        shop_hero_subtitle: 'Yo + Bodega',
+        shop_card_shop_name: 'Shop',
+        shop_card_shop_desc: 'All of my merch is tested by me, worn by me &mdash; it\'s the same goods you see in all my videos. I use <strong>Printful</strong> to handle on-demand manufacturing and <strong>Shopify</strong>.<br><br><em>-thanks for your support-</em>',
+        shop_card_support_name: 'Support',
+        shop_card_support_desc: 'Drop a Super Thanks, subscribe, or just come hang out.',
+        shop_btn_shop: 'Visit the Yodega &rarr;',
+        shop_btn_support: 'YouTube &rarr;',
+
+        // --- ABOUT ---
+        about_hero_title: 'About This Site',
+        about_hero_subtitle: 'A Music Tools Project &mdash; Part of the YoTeam! Ecosystem',
+        about_section_application: 'Application',
+        about_section_technology: 'Technology',
+        about_section_ecosystem: 'Music Tools Ecosystem',
+        about_section_links: 'Links',
+        about_label_app: 'App',
+        about_value_app: 'ITSWESSMITHYO Artist Site',
+        about_label_version: 'Version',
+        about_label_license: 'License',
+        about_value_license: 'GPL-3.0',
+        about_label_author: 'Author',
+        about_value_author: 'Wes Smith',
+        about_label_builtwith: 'Built With',
+        about_value_builtwith: 'Claude AI &mdash; Anthropic',
+        about_label_architecture: 'Architecture',
+        about_value_architecture: 'Single HTML File &mdash; No Frameworks, No Build Tools',
+        about_label_platform: 'Platform',
+        about_value_platform: 'Chrome &mdash; WebGPU Required',
+        about_label_apis: 'APIs',
+        about_label_shaders: 'Shaders',
+        about_value_shaders: 'Banner Pixelation &amp; Particle Cursor Trail',
+        about_label_oms: 'ONEMANSHYO',
+        about_value_oms: 'WebGPU Audio-Reactive Visual Performance',
+        about_label_sp: 'StudiYo Partner',
+        about_value_sp: 'Music Production Project Management',
+        about_label_artistsite: 'Artist Site',
+        about_value_artistsite: 'This App &mdash; WebGPU-Enhanced Artist Portfolio',
+        about_label_github: 'GitHub',
+        about_label_youtube: 'YouTube',
+        about_label_email: 'Email List',
+
+        // --- FOOTER ---
+        footer_header_official: 'Official',
+        footer_header_music: 'Music &amp; Visuals',
+        footer_header_socials: 'Socials',
+        footer_link_website: 'Website',
+        footer_link_epk: 'EPK',
+        footer_link_blog: 'Blog',
+        footer_link_emaillist: 'Email List',
+        footer_link_yodega: 'Yodega / Shop',
+        footer_link_youtube: 'YouTube',
+        footer_link_applemusic: 'Apple Music',
+        footer_link_spotify: 'Spotify',
+        footer_link_beatport: 'Beatport',
+        footer_link_soundcloud: 'SoundCloud',
+        footer_link_twitter: 'X / Twitter',
+        footer_link_instagram: 'Instagram',
+        footer_link_tiktok: 'TikTok',
+        footer_link_threads: 'Threads',
+
+        // --- COMMON (shared across sub-pages) ---
+        common_h2_about: 'About',
+        common_h2_gallery: 'Gallery',
+        common_back: '&larr; Back to Home',
+      },
+
+      // --------------------------------------------------------
+      // SPANISH MODE - API-translated
+      // Overrides here for cultural flavor once API base works
+      // --------------------------------------------------------
+      spanish: {
+        nav_language: 'Idioma',
+      },
+    };
+
+    // Translation cache - stores API results so we don't re-call
+    var translationCache = {};
+
+    // Current active mode
+    var currentMode = 'english';
+
+    // Google Translate API (same key as YouTube, referrer-restricted)
+    var TRANSLATE_API_KEY = 'AIzaSyDmkwW0HRZQJ0VW0mfb-CwaaA-1l-DMyPc';
+
+    // Close mobile nav menu
+    function closeMobileNav() {
+      var navLinks = document.querySelector('.nav-links');
+      if (navLinks) navLinks.classList.remove('mobile-open');
+    }
+
+    // Translate an array of strings via Google Cloud Translation API
+    async function translateStrings(texts, targetLang) {
+      var url = 'https://translation.googleapis.com/language/translate/v2?key=' + TRANSLATE_API_KEY;
+      var response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          q: texts,
+          target: targetLang,
+          source: 'en',
+          format: 'html'
+        })
+      });
+      var data = await response.json();
+      if (data.error) {
+        console.error('Translation API error:', data.error);
+        return null;
+      }
+      return data.data.translations.map(function(t) { return t.translatedText; });
+    }
+
+    // Build a full translated pack via API, layering overrides on top
+    async function buildTranslatedPack(mode, targetLang) {
+      // Check cache first
+      if (translationCache[mode]) return translationCache[mode];
+
+      var en = CONTENT.english;
+      var overrides = CONTENT[mode] || {};
+      var keys = Object.keys(en);
+      var textsToTranslate = [];
+      var keysToTranslate = [];
+
+      // Collect only keys that don't have manual overrides
+      keys.forEach(function(key) {
+        if (overrides[key]) return; // skip - override handles this
+        textsToTranslate.push(en[key]);
+        keysToTranslate.push(key);
+      });
+
+      // Call API in batches of 100 (API limit is 128 per request)
+      var translated = {};
+      var batchSize = 100;
+      for (var i = 0; i < textsToTranslate.length; i += batchSize) {
+        var batch = textsToTranslate.slice(i, i + batchSize);
+        var results = await translateStrings(batch, targetLang);
+        if (!results) {
+          console.error('Translation failed at batch', i);
+          return null;
+        }
+        for (var j = 0; j < results.length; j++) {
+          translated[keysToTranslate[i + j]] = results[j];
+        }
+      }
+
+      // Merge: API translations + manual overrides (overrides win)
+      var pack = {};
+      keys.forEach(function(key) {
+        pack[key] = overrides[key] || translated[key] || en[key];
+      });
+
+      // Cache it
+      translationCache[mode] = pack;
+      return pack;
+    }
+
+    // Apply a content pack mode
+    async function applyMode(mode) {
+      currentMode = mode;
+
+      var pack;
+      if (mode === 'english') {
+        pack = CONTENT.english;
+      } else {
+        // Determine target language from mode
+        var langMap = {
+          spanish: 'es',
+        };
+        var targetLang = langMap[mode] || 'es';
+        pack = await buildTranslatedPack(mode, targetLang);
+        if (!pack) {
+          console.error('Failed to build pack for mode:', mode);
+          pack = CONTENT.english; // fallback
+        }
+      }
+
+      // Apply to DOM
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        var value = pack[key] || CONTENT.english[key];
+        if (value !== undefined) {
+          el.innerHTML = value;
+        }
+      });
+
+      // Update active mode indicator
+      document.querySelectorAll('.mode-link').forEach(function(el) {
+        if (el.getAttribute('data-mode') === mode) {
+          el.classList.add('mode-active');
+        } else {
+          el.classList.remove('mode-active');
+        }
+      });
+
+      console.log('Mode applied:', mode);
+    }
+
+    // Reset to English
+    function resetMode() {
+      applyMode('english');
+    }
+
     </script>
 
 </body>
