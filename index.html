@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: V1_7_03 -->
+    <!-- App Version: V1_7_07 -->
     <style>
 
         
@@ -73,22 +73,22 @@
         }
 
         .nav-brand {
-            font-size: 15px;
+            font-size: 24px;
             font-weight: 700;
             letter-spacing: -0.3px;
             color: var(--text-primary);
             text-decoration: none;
         }
 
-        .nav-brand span {
+        .nav-artist-name {
             background: linear-gradient(45deg, var(--cyan), var(--magenta));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-app {
+        .nav-app-label {
             font-size: 12px;
-            font-weight: 400;
+            font-weight: 700;
             background: none !important;
             -webkit-text-fill-color: var(--orange) !important;
         }
@@ -1511,7 +1511,7 @@
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span>ITSWESSMITHYO</span> <span class="nav-app">artist site app</span> <span class="nav-version">[V1_7_03]</span></a>
+        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[V1_7_07]</span></a>
         <div class="nav-links">
             <a href="#home" data-i18n="nav_home">Home</a>
             <div class="nav-dropdown">
@@ -1583,8 +1583,9 @@
         <!-- MARQUEE -->
         <div class="marquee-bar">
             <div class="marquee-track">
-                <span class="marquee-item" data-i18n="home_marquee_1">Finally hit a million plays on a single song (<a href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spirit In The Sky - Burning Mon ReMix</a>). BIG hugs.</span>
-                <span class="marquee-item" data-i18n="home_marquee_2">My latest project is <a href="#neato-onemanshyo">ONEMANSHYO</a>. Live mixing + visuals. Check it all out on <a href="https://youtube.com/@ItsWesSmithYo" target="_blank">YouTube</a>.</span>
+                <span class="marquee-item active">Glad you made it.</span>
+                <span class="marquee-item">Enjoy the ride.</span>
+                <span class="marquee-item">-see u on the dance floor-</span>
             </div>
         </div>
 
@@ -1975,11 +1976,11 @@
                 <div class="about-section-title" data-i18n="about_section_application">Application</div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_app">App</span>
-                    <span class="about-row-value" data-i18n="about_value_app">ITSWESSMITHYO Artist Site</span>
+                    <span class="about-row-value" data-i18n="about_value_app">ONEMANSHYO Artist Site</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_version">Version</span>
-                    <span class="about-row-value">V1_7_03</span>
+                    <span class="about-row-value">V1_7_07</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_license">License</span>
@@ -2109,11 +2110,57 @@
             const plData = await plRes.json();
             const videoIds = plData.items.map(i => i.snippet.resourceId.videoId).join(',');
 
-            // Get durations to filter shorts
+            // Get durations and descriptions
             const vRes = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${videoIds}&key=${YT_API_KEY}`);
             const vData = await vRes.json();
 
-            // Filter: keep videos longer than 60 seconds
+            // --- NEWS MARQUEE ---
+            // Scan ALL videos for #news in description before filtering
+            var newsItems = vData.items.filter(function(v) {
+                return v.snippet.description.toLowerCase().includes('#news');
+            }).slice(0, 3).map(function(v) {
+                return '<a href="https://youtube.com/watch?v=' + v.id + '" target="_blank">' + v.snippet.title + '</a>';
+            });
+
+            var evergreens = [
+                'Glad you made it.',
+                'Enjoy the ride.',
+                '-see u on the dance floor-',
+            ];
+
+            // Build final marquee: interleave news + evergreens
+            var marqueeItems = [];
+            var eIdx = 0;
+            if (newsItems.length > 0) {
+                newsItems.forEach(function(item) {
+                    marqueeItems.push(item);
+                    marqueeItems.push(evergreens[eIdx % evergreens.length]);
+                    eIdx++;
+                });
+            } else {
+                marqueeItems = evergreens;
+            }
+
+            // Replace marquee HTML
+            var track = document.querySelector('.marquee-track');
+            if (track) {
+                track.innerHTML = marqueeItems.map(function(text, i) {
+                    return '<span class="marquee-item' + (i === 0 ? ' active' : '') + '">' + text + '</span>';
+                }).join('');
+
+                // Restart rotation
+                var mItems = track.querySelectorAll('.marquee-item');
+                if (mItems.length > 1) {
+                    var mCurrent = 0;
+                    setInterval(function() {
+                        mItems[mCurrent].classList.remove('active');
+                        mCurrent = (mCurrent + 1) % mItems.length;
+                        mItems[mCurrent].classList.add('active');
+                    }, 8000);
+                }
+            }
+
+            // Filter: keep videos longer than 60 seconds (for banner player)
             videos = vData.items.filter(v => {
                 const dur = v.contentDetails.duration;
                 const match = dur.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
@@ -2167,19 +2214,6 @@
     }
 
     loadVideos();
-    </script>
-    <script>
-    (function() {
-        var items = document.querySelectorAll('.marquee-item');
-        if (items.length < 2) return;
-        var current = 0;
-        items[0].classList.add('active');
-        setInterval(function() {
-            items[current].classList.remove('active');
-            current = (current + 1) % items.length;
-            items[current].classList.add('active');
-        }, 8000);
-    })();
     </script>
 
     <script>
@@ -2259,20 +2293,6 @@
     }
 
     loadVideos();
-    </script>
-
-    <script>
-    (function() {
-        var items = document.querySelectorAll('.marquee-item');
-        if (items.length < 2) return;
-        var current = 0;
-        items[0].classList.add('active');
-        setInterval(function() {
-            items[current].classList.remove('active');
-            current = (current + 1) % items.length;
-            items[current].classList.add('active');
-        }, 8000);
-    })();
     </script>
 
     <script>
@@ -2391,7 +2411,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - V1_7_03 */
+        /* Banner WebGPU Pixelation Shader - V1_7_07 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2578,7 +2598,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - V1_7_03 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - V1_7_07 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
@@ -2916,8 +2936,9 @@
         home_bio_greeting: "Hi Friend, It\'s Wes Smith Yo!",
         home_bio_text: 'I\'m an electronic dance music DJ &amp; producer. My catalog of <strong>500+ songs</strong> spans multiple genres, over <strong>7,000 days</strong> in Beatport top charts, a few #1\'s, and <strong>millions of plays</strong> through video games on PlayStation, Xbox and music streaming platforms. I\'ve spun for dance floors from NYC to India and hundreds of points in between. Thank you for your friendship, support &amp; taking this ride with me.',
         home_bio_signoff: '-see u on the dance floor-',
-        home_marquee_1: 'Finally hit a million plays on a single song (<a href="https://open.spotify.com/artist/0ifwunenl5wAeIQx1pOIPU" target="_blank">Spirit In The Sky - Burning Mon ReMix</a>). BIG hugs.',
-        home_marquee_2: 'My latest project is <a href="#neato-onemanshyo">ONEMANSHYO</a>. Live mixing + visuals. Check it all out on <a href="https://youtube.com/@ItsWesSmithYo" target="_blank">YouTube</a>.',
+        home_marquee_1: 'Glad you made it.',
+        home_marquee_2: 'Enjoy the ride.',
+        home_marquee_3: '-see u on the dance floor-',
 
         // --- APPS ROOT ---
         apps_hero_title: 'Apps',
@@ -3018,7 +3039,7 @@
         about_section_ecosystem: 'Music Tools Ecosystem',
         about_section_links: 'Links',
         about_label_app: 'App',
-        about_value_app: 'ITSWESSMITHYO Artist Site',
+        about_value_app: 'ONEMANSHYO Artist Site',
         about_label_version: 'Version',
         about_label_license: 'License',
         about_value_license: 'GPL-3.0',
