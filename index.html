@@ -1,3 +1,14 @@
+<!--
+  ONEMANSHYO Artist Site Beta V1_7_09
+  Music, software and shenanigans for the modern DIY DJ & Producer
+
+  Copyright (C) 2025-2026 Wes Smith / ONEMANSHYO
+  Licensed under GPL-3.0
+  https://onemanshyo.com
+
+  Version: Beta V1_7_09
+  Build Date: 2026-02-27
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +35,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: V1_7_08 -->
+    <!-- App Version: V1_7_09 -->
     <style>
 
         
@@ -1511,7 +1522,7 @@
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[V1_7_08]</span></a>
+        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[V1_7_09]</span></a>
         <div class="nav-links">
             <a href="#home" data-i18n="nav_home">Home</a>
             <div class="nav-dropdown">
@@ -1980,7 +1991,7 @@
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_version">Version</span>
-                    <span class="about-row-value">V1_7_08</span>
+                    <span class="about-row-value">V1_7_09</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_license">License</span>
@@ -1989,6 +2000,10 @@
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_author">Author</span>
                     <span class="about-row-value" data-i18n="about_value_author">Wes Smith</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-row-label" data-i18n="about_label_website">Website</span>
+                    <span class="about-row-value"><a href="https://onemanshyo.com" target="_blank">onemanshyo.com</a></span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_builtwith">Built With</span>
@@ -2411,7 +2426,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - V1_7_08 */
+        /* Banner WebGPU Pixelation Shader - V1_7_09 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2598,7 +2613,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - V1_7_08 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - V1_7_09 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
@@ -3045,6 +3060,7 @@
         about_value_license: 'GPL-3.0',
         about_label_author: 'Author',
         about_value_author: 'Wes Smith',
+        about_label_website: 'Website',
         about_label_builtwith: 'Built With',
         about_value_builtwith: 'Claude AI &mdash; Anthropic',
         about_label_architecture: 'Architecture',
