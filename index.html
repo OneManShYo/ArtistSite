@@ -1,12 +1,12 @@
 <!--
-  ONEMANSHYO Artist Site Beta V1_7_11
+  ONEMANSHYO Artist Site Beta V1_7_12
   Music, software and shenanigans for the modern DIY DJ & Producer
 
   Copyright (C) 2025-2026 Wes Smith / ONEMANSHYO
   Licensed under GPL-3.0
   https://onemanshyo.com
 
-  Version: Beta V1_7_11
+  Version: Beta V1_7_12
   Build Date: 2026-02-27
 -->
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: Beta V1_7_11 -->
+    <!-- App Version: Beta V1_7_12 -->
     <style>
 
         
@@ -1524,7 +1524,7 @@
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1_7_11]</span></a>
+        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1_7_12]</span></a>
         <div class="nav-links">
             <a href="#home" data-i18n="nav_home">Home</a>
             <div class="nav-dropdown">
@@ -1565,7 +1565,16 @@
 <!-- BANNER -->
     <div class="banner" id="top">
         <canvas id="bannerCanvas" style="width:100%;height:100%;"></canvas>
-        <div class="banner-panel banner-panel-left"><img src="img/onemanshyo/OMS_BackToTheFuture_2F1610D0.png" style="width:100%; height:100%; object-fit:cover; border-radius:0;"></div>
+        <div class="banner-panel banner-panel-left yt-player-overlay" id="ytShortsPlayer">
+            <div class="yt-player-thumb" id="ytShortsThumb" onclick="playShortsVideo()">
+                <img id="ytShortsThumbImg" src="" alt="Latest short">
+                <div class="yt-play-btn"></div>
+            </div>
+            <div class="yt-player-info">
+                <div class="yt-player-title" id="ytShortsTitle">Loading...</div>
+                <div class="yt-player-dots" id="ytShortsDots"></div>
+            </div>
+        </div>
         <div class="banner-panel banner-panel-right yt-player-overlay" id="ytPlayer">
             <div class="yt-player-thumb" id="ytThumb" onclick="playVideo()">
                 <img id="ytThumbImg" src="" alt="Latest video">
@@ -1992,7 +2001,7 @@
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_version">Version</span>
-                    <span class="about-row-value">Beta V1_7_11</span>
+                    <span class="about-row-value">Beta V1_7_12</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_license">License</span>
@@ -2110,9 +2119,22 @@
     <script>
     const YT_API_KEY = 'AIzaSyDmkwW0HRZQJ0VW0mfb-CwaaA-1l-DMyPc';
     const CHANNEL_ID = 'UC3bhbb9C4szjrfRmfyaDKaw';
+
+    // Videos panel (right) — >60s
     let videos = [];
     let currentIdx = 0;
     let rotateTimer = null;
+
+    // Shorts panel (left) — ≤60s
+    let shorts = [];
+    let shortsIdx = 0;
+    let shortsRotateTimer = null;
+
+    function parseDuration(dur) {
+        const match = dur.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+        if (!match) return 0;
+        return (parseInt(match[1]||0)*3600) + (parseInt(match[2]||0)*60) + parseInt(match[3]||0);
+    }
 
     async function loadVideos() {
         try {
@@ -2121,7 +2143,7 @@
             const chData = await chRes.json();
             const uploadsId = chData.items[0].contentDetails.relatedPlaylists.uploads;
 
-            // Get latest 15 videos
+            // Get latest 15 uploads
             const plRes = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=15&key=${YT_API_KEY}`);
             const plData = await plRes.json();
             const videoIds = plData.items.map(i => i.snippet.resourceId.videoId).join(',');
@@ -2131,7 +2153,6 @@
             const vData = await vRes.json();
 
             // --- NEWS MARQUEE ---
-            // Scan ALL videos for #news in description before filtering
             var newsItems = vData.items.filter(function(v) {
                 return v.snippet.description.toLowerCase().includes('#news');
             }).slice(0, 3).map(function(v) {
@@ -2143,7 +2164,6 @@
                 'Enjoy the ride.',
             ];
 
-            // Build final marquee: interleave news + evergreens
             var marqueeItems = [];
             var eIdx = 0;
             if (newsItems.length > 0) {
@@ -2156,14 +2176,12 @@
                 marqueeItems = evergreens;
             }
 
-            // Replace marquee HTML
             var track = document.querySelector('.marquee-track');
             if (track) {
                 track.innerHTML = marqueeItems.map(function(text, i) {
                     return '<span class="marquee-item' + (i === 0 ? ' active' : '') + '">' + text + '</span>';
                 }).join('');
 
-                // Restart rotation
                 var mItems = track.querySelectorAll('.marquee-item');
                 if (mItems.length > 1) {
                     var mCurrent = 0;
@@ -2175,15 +2193,23 @@
                 }
             }
 
-            // Filter: keep videos longer than 60 seconds (for banner player)
-            videos = vData.items.filter(v => {
-                const dur = v.contentDetails.duration;
-                const match = dur.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-                if (!match) return false;
-                const secs = (parseInt(match[1]||0)*3600) + (parseInt(match[2]||0)*60) + parseInt(match[3]||0);
-                return secs > 60;
-            }).slice(0, 5);
+            // --- SPLIT: Shorts ≤60s, Videos >60s ---
+            shorts = vData.items.filter(v => parseDuration(v.contentDetails.duration) <= 60).slice(0, 5);
+            videos = vData.items.filter(v => parseDuration(v.contentDetails.duration) > 60).slice(0, 5);
 
+            // --- SHORTS PANEL (left) ---
+            if (shorts.length > 0) {
+                buildShortsDots();
+                showShort(0);
+                shortsRotateTimer = setInterval(() => {
+                    shortsIdx = (shortsIdx + 1) % shorts.length;
+                    showShort(shortsIdx);
+                }, 5000);
+            } else {
+                document.getElementById('ytShortsPlayer').style.display = 'none';
+            }
+
+            // --- VIDEOS PANEL (right) ---
             if (videos.length > 0) {
                 buildDots();
                 showVideo(0);
@@ -2191,19 +2217,22 @@
                     currentIdx = (currentIdx + 1) % videos.length;
                     showVideo(currentIdx);
                 }, 5000);
+            } else {
+                document.getElementById('ytPlayer').style.display = 'none';
             }
         } catch(e) {
             document.getElementById('ytPlayer').style.display = 'none';
+            document.getElementById('ytShortsPlayer').style.display = 'none';
         }
     }
 
+    // --- Videos (right panel) ---
     function showVideo(idx) {
         currentIdx = idx;
         const v = videos[idx];
-        const img = document.getElementById('ytThumbImg');
-        img.src = v.snippet.thumbnails.medium.url;
+        document.getElementById('ytThumbImg').src = v.snippet.thumbnails.medium.url;
         document.getElementById('ytTitle').textContent = v.snippet.title;
-        document.querySelectorAll('.yt-player-dot').forEach((d,i) => {
+        document.querySelectorAll('#ytDots .yt-player-dot').forEach((d,i) => {
             d.classList.toggle('active', i === idx);
         });
     }
@@ -2221,89 +2250,37 @@
 
     function playVideo() {
         const v = videos[currentIdx];
-        const player = document.getElementById('ytPlayer');
         const thumb = document.getElementById('ytThumb');
-        
         clearInterval(rotateTimer);
         thumb.innerHTML = '<iframe class="yt-player-iframe" src="https://www.youtube.com/embed/' + v.id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     }
 
-    loadVideos();
-    </script>
-
-    <script>
-    const YT_API_KEY = 'AIzaSyDmkwW0HRZQJ0VW0mfb-CwaaA-1l-DMyPc';
-    const CHANNEL_ID = 'UC3bhbb9C4szjrfRmfyaDKaw';
-    let videos = [];
-    let currentIdx = 0;
-    let rotateTimer = null;
-
-    async function loadVideos() {
-        try {
-            // Get uploads playlist
-            const chRes = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${YT_API_KEY}`);
-            const chData = await chRes.json();
-            const uploadsId = chData.items[0].contentDetails.relatedPlaylists.uploads;
-
-            // Get latest 15 videos
-            const plRes = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=15&key=${YT_API_KEY}`);
-            const plData = await plRes.json();
-            const videoIds = plData.items.map(i => i.snippet.resourceId.videoId).join(',');
-
-            // Get durations to filter shorts
-            const vRes = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${videoIds}&key=${YT_API_KEY}`);
-            const vData = await vRes.json();
-
-            // Filter: keep videos longer than 60 seconds
-            videos = vData.items.filter(v => {
-                const dur = v.contentDetails.duration;
-                const match = dur.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-                if (!match) return false;
-                const secs = (parseInt(match[1]||0)*3600) + (parseInt(match[2]||0)*60) + parseInt(match[3]||0);
-                return secs > 60;
-            }).slice(0, 5);
-
-            if (videos.length > 0) {
-                buildDots();
-                showVideo(0);
-                rotateTimer = setInterval(() => {
-                    currentIdx = (currentIdx + 1) % videos.length;
-                    showVideo(currentIdx);
-                }, 5000);
-            }
-        } catch(e) {
-            document.getElementById('ytPlayer').style.display = 'none';
-        }
-    }
-
-    function showVideo(idx) {
-        currentIdx = idx;
-        const v = videos[idx];
-        const img = document.getElementById('ytThumbImg');
-        img.src = v.snippet.thumbnails.medium.url;
-        document.getElementById('ytTitle').textContent = v.snippet.title;
-        document.querySelectorAll('.yt-player-dot').forEach((d,i) => {
+    // --- Shorts (left panel) ---
+    function showShort(idx) {
+        shortsIdx = idx;
+        const v = shorts[idx];
+        document.getElementById('ytShortsThumbImg').src = v.snippet.thumbnails.medium.url;
+        document.getElementById('ytShortsTitle').textContent = v.snippet.title;
+        document.querySelectorAll('#ytShortsDots .yt-player-dot').forEach((d,i) => {
             d.classList.toggle('active', i === idx);
         });
     }
 
-    function buildDots() {
-        const container = document.getElementById('ytDots');
+    function buildShortsDots() {
+        const container = document.getElementById('ytShortsDots');
         container.innerHTML = '';
-        videos.forEach((_, i) => {
+        shorts.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.className = 'yt-player-dot' + (i === 0 ? ' active' : '');
-            dot.onclick = (e) => { e.stopPropagation(); clearInterval(rotateTimer); showVideo(i); };
+            dot.onclick = (e) => { e.stopPropagation(); clearInterval(shortsRotateTimer); showShort(i); };
             container.appendChild(dot);
         });
     }
 
-    function playVideo() {
-        const v = videos[currentIdx];
-        const player = document.getElementById('ytPlayer');
-        const thumb = document.getElementById('ytThumb');
-        
-        clearInterval(rotateTimer);
+    function playShortsVideo() {
+        const v = shorts[shortsIdx];
+        const thumb = document.getElementById('ytShortsThumb');
+        clearInterval(shortsRotateTimer);
         thumb.innerHTML = '<iframe class="yt-player-iframe" src="https://www.youtube.com/embed/' + v.id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     }
 
@@ -2426,7 +2403,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - Beta V1_7_11 */
+        /* Banner WebGPU Pixelation Shader - Beta V1_7_12 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2613,7 +2590,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1_7_11 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1_7_12 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
