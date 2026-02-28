@@ -1,12 +1,12 @@
 <!--
-  ONEMANSHYO Artist Site Beta V1_7_10
+  ONEMANSHYO Artist Site Beta V1_7_11
   Music, software and shenanigans for the modern DIY DJ & Producer
 
   Copyright (C) 2025-2026 Wes Smith / ONEMANSHYO
   Licensed under GPL-3.0
   https://onemanshyo.com
 
-  Version: Beta V1_7_10
+  Version: Beta V1_7_11
   Build Date: 2026-02-27
 -->
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: Beta V1_7_10 -->
+    <!-- App Version: Beta V1_7_11 -->
     <style>
 
         
@@ -784,10 +784,12 @@
             white-space: nowrap;
             opacity: 0;
             transition: opacity 3s ease;
+            pointer-events: none;
         }
 
         .marquee-item.active {
             opacity: 1;
+            pointer-events: auto;
         }
 
         .marquee-item a {
@@ -1522,7 +1524,7 @@
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1_7_10]</span></a>
+        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1_7_11]</span></a>
         <div class="nav-links">
             <a href="#home" data-i18n="nav_home">Home</a>
             <div class="nav-dropdown">
@@ -1596,7 +1598,6 @@
             <div class="marquee-track">
                 <span class="marquee-item active">Glad you made it.</span>
                 <span class="marquee-item">Enjoy the ride.</span>
-                <span class="marquee-item">-see u on the dance floor-</span>
             </div>
         </div>
 
@@ -1991,7 +1992,7 @@
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_version">Version</span>
-                    <span class="about-row-value">Beta V1_7_10</span>
+                    <span class="about-row-value">Beta V1_7_11</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_license">License</span>
@@ -2140,7 +2141,6 @@
             var evergreens = [
                 'Glad you made it.',
                 'Enjoy the ride.',
-                '-see u on the dance floor-',
             ];
 
             // Build final marquee: interleave news + evergreens
@@ -2426,7 +2426,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - Beta V1_7_10 */
+        /* Banner WebGPU Pixelation Shader - Beta V1_7_11 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2613,7 +2613,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1_7_10 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1_7_11 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
@@ -2953,7 +2953,6 @@
         home_bio_signoff: '-see u on the dance floor-',
         home_marquee_1: 'Glad you made it.',
         home_marquee_2: 'Enjoy the ride.',
-        home_marquee_3: '-see u on the dance floor-',
 
         // --- APPS ROOT ---
         apps_hero_title: 'Apps',
