@@ -1,12 +1,12 @@
 <!--
-  ONEMANSHYO Artist Site Beta V1_7_12
+  ONEMANSHYO Artist Site Beta V1.9.0
   Music, software and shenanigans for the modern DIY DJ & Producer
 
   Copyright (C) 2025-2026 Wes Smith / ONEMANSHYO
   Licensed under GPL-3.0
   https://onemanshyo.com
 
-  Version: Beta V1_7_12
+  Version: Beta V1.9.0
   Build Date: 2026-02-27
 -->
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: Beta V1_7_12 -->
+    <!-- App Version: Beta V1.9.0 -->
     <style>
 
         
@@ -1524,7 +1524,7 @@
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1_7_12]</span></a>
+        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1.9.0]</span></a>
         <div class="nav-links">
             <a href="#home" data-i18n="nav_home">Home</a>
             <div class="nav-dropdown">
@@ -1540,8 +1540,8 @@
             <div class="nav-dropdown">
                 <a href="#apps" data-i18n="nav_apps">Apps</a>
                 <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
-                    <a href="#neato-onemanshyo" data-i18n="nav_sub_oms">ONEMANSHYO</a>
-                    <a href="#neato-studiyo-partner" data-i18n="nav_sub_sp">StudiYo Partner</a>
+                    <a href="#app-onemanshyo" data-i18n="nav_sub_oms">ONEMANSHYO</a>
+                    <a href="#app-studiyo-partner" data-i18n="nav_sub_sp">StudiYo Partner</a>
                 </div></div>
             </div>
             <a href="#shop" data-i18n="nav_shop">Shop</a>
@@ -1624,11 +1624,16 @@
     <div class="page-content">
 
         <div class="app-grid">
-            <a class="app-card app-card-img" href="#neato-onemanshyo" style="background-image:url('img/onemanshyo/OMS_hero_banner.png');">
+            <div class="app-card app-card-img" style="background-image:url('img/onemanshyo/OMS_hero_banner.png');">
                 <div class="app-name" data-i18n="apps_card_oms_name">ONEMANSHYO</div>
-                <div class="app-desc" data-i18n="apps_card_oms_desc">Live electronic music performance combining DJ mixing and real-time audio-reactive visuals. WebGPU-powered. Single HTML file.</div>
-            </a>
-            <a class="app-card app-card-img" href="#neato-studiyo-partner" style="background-image:url('img/studiyo-partner/StudiYoPartner_Icon_Borderless.png');">
+                <div class="app-desc" style="margin-right:0;">
+                    <a href="https://onemanshyo.com/" target="_blank" style="color:#aaa; text-decoration:none;"><span style="color:#ffa500;">OMS ArtistSite</span> &rarr; simple interactive artist page</a><br>
+                    <a href="#app-onemanshyo" style="color:#aaa; text-decoration:none;"><span style="color:#ffa500;">OMS Dojo</span> &rarr; create.organize.perform</a><br>
+                    <a href="https://sozo.onemanshyo.com/" target="_blank" style="color:#aaa; text-decoration:none;"><span style="color:#ffa500;">OMS Sozo</span> &rarr; Apple Music understanding demo app</a><br>
+                    <a href="https://chippy.onemanshyo.com/" target="_blank" style="color:#aaa; text-decoration:none;"><span style="color:#ffa500;">OMS Chippy</span> &rarr; Electronic dance music fun</a>
+                </div>
+            </div>
+            <a class="app-card app-card-img" href="#app-studiyo-partner" style="background-image:url('img/studiyo-partner/StudiYoPartner_Icon_Borderless.png');">
                 <div class="app-name" data-i18n="apps_card_sp_name">StudiYo Partner</div>
                 <div class="app-desc" data-i18n="apps_card_sp_desc">Custom GPT for music producers, DJs and creatives. Your AI studio companion on the OpenAI platform.</div>
             </a>
@@ -1716,11 +1721,11 @@
     </div>
     </section>
 
-    <section id="neato-onemanshyo" class="page-section">
+    <section id="app-onemanshyo" class="page-section">
 <div class="project-hero">
             <img src="img/onemanshyo/OMS_hero_banner.png" alt="ONEMANSHYO">
         <div class="project-hero-text">
-            <h1 class="project-title" data-i18n="oms_hero_title">ONEMANSHYO</h1>
+            <h1 class="project-title" data-i18n="oms_hero_title">ONEMANSHYO Dojo</h1>
         </div>
     </div>
 
@@ -1729,7 +1734,7 @@
         <div class="project-section">
             <h2 data-i18n="common_h2_about">About</h2>
             <p class="project-text" data-i18n="oms_about_text_1">
-                ONEMANSHYO is an electronic music performance combining DJ mixing and live reactive visual mixing. 
+                ONEMANSHYO Dojo is an electronic music performance surface combining DJ mixing and live reactive visual mixing. 
                 Think of it as a <strong>one-person audio/visual show</strong> &mdash; live DJ set with real-time 
                 generated visuals that react to the music.
             </p>
@@ -1765,7 +1770,7 @@
     </div>
     </section>
 
-    <section id="neato-studiyo-partner" class="page-section">
+    <section id="app-studiyo-partner" class="page-section">
 <div class="project-hero">
             <img src="img/studiyo-partner/StudiYoPartner_Icon_Borderless.png" alt="StudiYo Partner">
         <div class="project-hero-text">
@@ -2001,7 +2006,7 @@
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_version">Version</span>
-                    <span class="about-row-value">Beta V1_7_12</span>
+                    <span class="about-row-value">Beta V1.9.0</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_license">License</span>
@@ -2314,7 +2319,7 @@
             });
             
             // Highlight parent nav for sub-pages
-            if (hash === 'neato-onemanshyo' || hash === 'neato-studiyo-partner') {
+            if (hash === 'app-onemanshyo' || hash === 'app-studiyo-partner') {
                 var appsLink = document.querySelector('nav a[href="#apps"]');
                 if (appsLink) appsLink.classList.add('active');
             } else if (hash.startsWith('neato-')) {
@@ -2403,7 +2408,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - Beta V1_7_12 */
+        /* Banner WebGPU Pixelation Shader - Beta V1.9.0 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2590,7 +2595,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1_7_12 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1.9.0 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
@@ -2971,8 +2976,8 @@
         bf_about_text_2: 'A satirical fitness program that proves you don\'t need expensive gear to stay in shape. Paired with curated workout playlists on Apple Music.',
 
         // --- ONEMANSHYO SUB ---
-        oms_hero_title: 'ONEMANSHYO',
-        oms_about_text_1: 'ONEMANSHYO is an electronic music performance combining DJ mixing and live reactive visual mixing. Think of it as a <strong>one-person audio/visual show</strong> &mdash; live DJ set with real-time generated visuals that react to the music.',
+        oms_hero_title: 'ONEMANSHYO Dojo',
+        oms_about_text_1: 'ONEMANSHYO Dojo is an electronic music performance surface combining DJ mixing and live reactive visual mixing. Think of it as a <strong>one-person audio/visual show</strong> &mdash; live DJ set with real-time generated visuals that react to the music.',
         oms_about_text_2: 'The custom app runs entirely in Chrome using <strong>WebGPU</strong> for shader rendering, <strong>Web Audio API</strong> for analysis and mixing, and the <strong>File System Access API</strong> for persistent library management. Zero installation. Single HTML file.',
         oms_h2_features: 'App Features',
         oms_spec_create: '<strong>CREATE</strong> &mdash; Author WGSL fragment shaders with real-time preview, audio-reactive modulators (bass/mid/treble), FFT analysis, transform controls, and BumpR StickRs video overlays.',
