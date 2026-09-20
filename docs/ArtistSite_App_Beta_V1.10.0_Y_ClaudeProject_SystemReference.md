@@ -1,8 +1,8 @@
-# OMS Artist Site [Beta V1_7_0] - SYSTEM REFERENCE
+# OMS Artist Site [Beta V1.10.0] - SYSTEM REFERENCE
 
-**Current Date:** 2026-02-13  
-**Current UNIX Epoch:** 1771027200  
-**App Version:** Beta V1_7_0  
+**Current Date:** 2026-09-20  
+**Current UNIX Epoch:** 1789908904  
+**App Version:** Beta V1.10.0  
 **App License:** GPL-3.0  
 **Document Line Count:** ~420  
 **Document Purpose:** Design system, architecture, and development process reference

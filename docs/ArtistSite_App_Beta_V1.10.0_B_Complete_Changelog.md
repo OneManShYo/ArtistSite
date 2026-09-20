@@ -1,11 +1,39 @@
-# OMS Artist Site [Beta V1_7_0] - COMPLETE CHANGELOG
+# OMS Artist Site [Beta V1.10.0] - COMPLETE CHANGELOG
 
-**Current Date:** 2026-02-13  
-**Current UNIX Epoch:** 1771027200  
-**App Version:** Beta V1_7_0  
+**Current Date:** 2026-09-20  
+**Current UNIX Epoch:** 1789908904  
+**App Version:** Beta V1.10.0  
 **App License:** GPL-3.0  
 **Document Line Count:** ~110  
-**Document Purpose:** Complete development history for V1_7_0 release
+**Document Purpose:** Complete development history for V1.10.0 release
+
+---
+
+## V1.10.0 — Learn Page
+
+### Added
+- **Learn Page (#learn)** — New nav tab (last content tab, after About) and `#learn` page-section. Project-hero banner (340px, `home_banner.png`) + page-content. Auto-routes via the generic hash router (no route-table change needed).
+- **Learn Content** — Reference listing carried from the Chippy app: General intro, Inspiration (People / Companies / Communities), Videos, and Other Material, plus a closing `PLUR` line.
+
+### Changed
+- **Design-System Compliance** — Learn content rebuilt on established components: `about-section` panels with `about-section-title` cyan headers; links via `about-row-value` (cyan `#00d4ff`, no underline); body `#888`, source captions `#555`; SF font stack. No one-off classes.
+
+### Removed
+- **None.**
+
+*Iterations: V1.9.01 → V1.9.03 (Learn add → design-system restyle → left-align). Note: iteration builds carried the in-file string `V1.10.0`; seeded and published as V1.10.0.*
+
+---
+
+## V1.9.0 — Apps Card OMS Links, Dojo Rename
+
+### Added
+- **OMS Suite Links** — Apps card links out to the OMS suite apps: ArtistSite, Dojo, Sozo, Chippy.
+
+### Changed
+- **ONEMANSHYO → Dojo** — ONEMANSHYO app page renamed to Dojo.
+
+*(Entry reconstructed from the live release commit; V1.9.0 shipped without a packaged doc set. V1.8.0's changelog lives in the V1.8.0 Deliverables; the carried base here is V1_7_0 from the live Pub.)*
 
 ---
 

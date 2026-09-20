@@ -1,8 +1,8 @@
-# OMS Artist Site [Beta V1_7_0] - USER GUIDE
+# OMS Artist Site [Beta V1.10.0] - USER GUIDE
 
-**Current Date:** 2026-02-13  
-**Current UNIX Epoch:** 1771027200  
-**App Version:** Beta V1_7_0  
+**Current Date:** 2026-09-20  
+**Current UNIX Epoch:** 1789908904  
+**App Version:** Beta V1.10.0  
 **App License:** GPL-3.0  
 **Document Line Count:** ~170  
 **Document Purpose:** Deployment and hosting guide for OMS Artist Site

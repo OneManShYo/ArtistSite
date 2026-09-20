@@ -1,8 +1,8 @@
-# OMS Artist Site [Beta V1_7_0] - DEVELOPER DOCUMENTATION
+# OMS Artist Site [Beta V1.10.0] - DEVELOPER DOCUMENTATION
 
-**Current Date:** 2026-02-13  
-**Current UNIX Epoch:** 1771027200  
-**App Version:** Beta V1_7_0  
+**Current Date:** 2026-09-20  
+**Current UNIX Epoch:** 1789908904  
+**App Version:** Beta V1.10.0  
 **App License:** GPL-3.0  
 **Document Line Count:** ~260  
 **Document Purpose:** Technical implementation reference for developers
@@ -82,6 +82,12 @@ OMS Artist Site is a single HTML file containing all HTML, CSS, and JavaScript. 
   - MUSIC TOOLS ECOSYSTEM: OMS, StudiYo Partner, Artist Site
   - LINKS: GitHub, YouTube, Email List
 
+### LEARN (#learn)
+- Project-hero banner (340px) with "Learn" title + "Research, references & ways to learn this stuff" subtitle
+- page-content with `about-section` panels (design-system compliant): General, Inspiration (People/Companies/Communities sub-labels), Videos, Other Material
+- Links styled via `about-row-value` (cyan `#00d4ff`); closing `PLUR` line
+- Content reused from the Chippy app's Learn tab
+
 ---
 
 ## 3. SPA ROUTING
@@ -105,6 +111,7 @@ All sections use `.page-section` class, toggled via `.active`.
 | #apps-studiyo-partner | StudiYo Partner sub-page |
 | #shop | SHOP |
 | #about | ABOUT |
+| #learn | LEARN |
 
 ### Route Handler Behaviors
 - Toggles `.active` class on matching `.page-section`
