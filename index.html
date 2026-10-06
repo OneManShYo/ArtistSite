@@ -1573,11 +1573,14 @@
         }
 
         /* ---- Visuals page: summary (left) + video (right) ---- */
-        .visuals-top { display:flex; gap:28px; align-items:flex-start; }
+        .visuals-top { display:flex; gap:28px; align-items:stretch; }
         .visuals-text { flex:1 1 0; min-width:0; color:#888; font-size:14px; line-height:1.7; }
         .visuals-text p { margin:0 0 14px; }
-        .visuals-video { flex:1 1 0; min-width:0; }
-        @media (max-width:768px) { .visuals-top { flex-direction:column; } .visuals-video { order:-1; } }
+        .visuals-video { flex:1 1 0; min-width:0; display:flex; flex-direction:column; }
+        @media (max-width:768px) {
+            .visuals-top { flex-direction:column; align-items:stretch; }
+            .visuals-text, .visuals-video { flex:none; display:block; order:0; }
+        }
 
         /* ---- Pocket Rave device chrome (V1.10.05): top connector strip, shown on mobile ---- */
         #prSafeTop { position:fixed; top:0; left:16px; right:16px; height:calc(env(safe-area-inset-top) + 26px); background:#0a0a0a; z-index:210; display:none; box-shadow:inset 0 -3px 6px rgba(0,0,0,.85); }
@@ -1591,6 +1594,31 @@
             .oms-frame { width: 14px; }
             nav { left: 14px; right: 14px; top: calc(env(safe-area-inset-top) + 26px); }
             .banner, .project-hero { margin-top: calc(env(safe-area-inset-top) + 26px + 50px) !important; }
+        }
+
+        /* ---- V1.10.05e: mobile nav — hamburger opens the FULL menu as a panel below the header ---- */
+        @media (max-width: 768px) {
+            .nav-row2 { height:0; min-height:0; margin:0; padding:0; border:none; background:none; overflow:visible; }
+            .nav-row2 .nav-links {
+                display:none;
+                position:fixed;
+                top: calc(env(safe-area-inset-top) + 26px + 50px);
+                left:14px; right:14px;
+                flex-direction:column; align-items:stretch; gap:0; height:auto;
+                background:rgba(12,12,12,0.98);
+                -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+                border-bottom:1px solid #444;
+                padding:8px 0; z-index:300;
+                max-height: calc(100vh - (env(safe-area-inset-top) + 26px + 50px));
+                overflow-y:auto; -webkit-overflow-scrolling:touch;
+            }
+            .nav-row2 .nav-links.mobile-open { display:flex; }
+            .nav-row2 .nav-links > a,
+            .nav-row2 .nav-links > .nav-dropdown > a { display:block; padding:12px 24px; border-bottom:none; }
+            .nav-row2 .nav-dropdown { height:auto; display:block; }
+            .nav-row2 .nav-dropdown-menu { display:block; position:static; padding-top:0; }
+            .nav-row2 .nav-dropdown-menu-inner { background:none; border:none; padding:0 0 0 12px; }
+            .nav-row2 .nav-divider { display:none; }
         }
     </style>
 </head>
@@ -2267,7 +2295,7 @@
             </div>
             <div class="visuals-video about-section">
                 <div class="about-section-title">Video</div>
-                <div style="position:relative;width:100%;aspect-ratio:16/9;margin-bottom:10px;">
+                <div style="position:relative;width:100%;aspect-ratio:16/9;margin:auto 0;">
                     <iframe src="https://www.youtube.com/embed/mMD-ilal_hE" title="The History of Visuals in Ableton Live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
                 </div>
             </div>
