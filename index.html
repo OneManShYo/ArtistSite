@@ -1,12 +1,12 @@
 <!--
-  ONEMANSHYO Artist Site Beta V1.10.02
+  ONEMANSHYO Artist Site Beta V1.10.03
   Music, software and shenanigans for the modern DIY DJ & Producer
 
   Copyright (C) 2025-2026 Wes Smith / ONEMANSHYO
   Licensed under GPL-3.0
   https://onemanshyo.com
 
-  Version: Beta V1.10.02
+  Version: Beta V1.10.03
   Build Date: 2026-02-27
 -->
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
     <meta name="twitter:description" content="Open source tools, WebGPU visuals, and electronic music for the modern DIY DJ & Producer.">
     <meta name="twitter:image" content="https://onemanshyo.com/img/home/home_banner.png">
 
-    <!-- App Version: Beta V1.10.02 -->
+    <!-- App Version: Beta V1.10.03 -->
     <style>
 
         
@@ -267,6 +267,9 @@
                 align-items: stretch;
                 padding: 8px 0;
                 z-index: 200;
+                max-height: calc(100vh - 50px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .nav-links.mobile-open {
@@ -1526,7 +1529,7 @@
 <canvas id="particleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
     <nav>
-        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1.10.02]</span></a>
+        <a href="#home" class="nav-brand"><span class="nav-artist-name">ONEMANSHYO</span> <span class="nav-app-label">artist site app</span> <span class="nav-version">[Beta V1.10.03]</span></a>
         <div class="nav-links">
             <a href="#home" data-i18n="nav_home">Home</a>
             <div class="nav-dropdown">
@@ -2009,7 +2012,7 @@
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_version">Version</span>
-                    <span class="about-row-value">Beta V1.10.02</span>
+                    <span class="about-row-value">Beta V1.10.03</span>
                 </div>
                 <div class="about-row">
                     <span class="about-row-label" data-i18n="about_label_license">License</span>
@@ -2101,9 +2104,20 @@
 
     <div class="page-content" style="text-align:left;">
 
+        <div style="font-size:15px;font-weight:700;letter-spacing:1.5px;color:var(--magenta);border-top:1px solid rgba(255,255,255,0.1);margin:28px 0 10px;padding-top:18px;">Hi Friend ;)</div>
+
         <div class="about-section">
             <div class="about-section-title">General</div>
             <div class="about-row-value" style="color:#888;font-size:13px;line-height:1.6;">Below you can find a listing of many of the key YouTube videos, documents, and other resources that were referenced in learning the skills required to bring ONEMANSHYO to life.</div>
+        </div>
+
+        <div style="font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--magenta);border-top:1px solid rgba(255,255,255,0.1);margin:28px 0 10px;padding-top:18px;">My Content</div>
+
+        <div class="about-section">
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#555;margin:14px 0 6px;">Walkthroughs</div>
+            <div class="about-row-value" style="color:#888;font-size:13px;line-height:1.6;">
+                <div style="margin-bottom:8px;"><a href="#learn-visuals">History of Visuals in Ableton Live</a><br><span style="color:#555;font-size:12px;">A chronological timeline of native visuals in Ableton Live Suite</span></div>
+            </div>
         </div>
 
         <div class="about-section">
@@ -2119,6 +2133,8 @@
             <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#555;margin:14px 0 6px;">Communities</div>
             <div class="about-row-value" style="color:#888;font-size:13px;line-height:1.6;">Kick &amp; Bass Community, W3C&apos;s &quot;GPU for the Web&quot; Community Group</div>
         </div>
+
+        <div style="font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--magenta);border-top:1px solid rgba(255,255,255,0.1);margin:28px 0 10px;padding-top:18px;">Content by Others</div>
 
         <div class="about-section">
             <div class="about-section-title">Videos</div>
@@ -2152,6 +2168,76 @@
 
     </div>
     </section>
+
+    <section id="learn-visuals" class="page-section">
+<div class="project-hero">
+            <img src="img/home/home_banner.png" alt="Wes Smith">
+        <div class="project-hero-text">
+            <h1 class="project-title">History of Visuals in Ableton Live</h1>
+            <p class="page-subtitle" style="color:#aaa;margin-top:4px;">A chronological timeline of native visuals in Ableton Live Suite</p>
+        </div>
+    </div>
+
+    <div class="page-content" style="text-align:left;">
+
+        <div style="font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--magenta);border-top:1px solid rgba(255,255,255,0.1);margin:28px 0 10px;padding-top:18px;">YouTube Video</div>
+
+        <div class="about-section">
+            <div class="about-row-value" style="color:#555;font-size:13px;line-height:1.6;">Placeholder &mdash; video embed to be added.</div>
+        </div>
+
+        <div style="font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--magenta);border-top:1px solid rgba(255,255,255,0.1);margin:28px 0 10px;padding-top:18px;">Reference Material</div>
+
+        <div class="about-section">
+            <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;font-size:13px;line-height:1.5;">
+                    <thead>
+                        <tr>
+                            <th style="padding:0 14px 8px 0;border-bottom:1px solid #333;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#555;text-align:left;">Date</th>
+                            <th style="padding:0 14px 8px 0;border-bottom:1px solid #333;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#555;text-align:left;">Title</th>
+                            <th style="padding:0 14px 8px 0;border-bottom:1px solid #333;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#555;text-align:left;">Source</th>
+                            <th style="padding:0 14px 8px 0;border-bottom:1px solid #333;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#555;text-align:left;">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">1997</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">What is Max?</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://cycling74.com/products/max" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2003</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Jitter - Visuals for Max</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://cycling74.com/products/jitter" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2006-09-28</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Ableton Releases Live 6</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Ableton</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.ableton.com/en/pages/press/releases/2006_09_29a/" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2006-12-12</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Cycling74 Perspectives: John deKron</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=rlUdmdEU8ak" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2009-11-16</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Cycling74 Perspectives: Robert Henke on Max for Live</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=VmLvjRmulAM" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2009-11-23</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Ableton releases Max for Live</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Ableton</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.ableton.com/en/press/press-archive/press-archive-mfl-release/" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2009-12</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Max4Live Jitter-MIDI demo</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Greg Lorincz</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="http://vimeo.com/8465023" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2010-11-18</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Cycling74 Vizzie Tutorials: Quickstart - 1</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=z4TfdPHrbgg" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2011-01-18</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Audio Visual set in Ableton with VIZZable</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Bob Jarvis</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=xCEB32A4Ktk" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2013-03-05</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Live 9 and Push are here</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Ableton</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.ableton.com/en/press/press-archive/press-archive-release-9-push/" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2014-08-15</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Crazy Ableton Live Visuals Demo and Download</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Sounds Like Soma</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=8YWSwfsJmMY" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2017-06-06</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Ableton Acquires Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">DJ TechTools</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://djtechtools.com/2017/06/06/ableton-acquires-cycling-74/" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2017-11-14</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">EboSuite demo at LOOP 2017</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">EboSuite</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=fmD2pNBtSlI" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2018-02-06</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Max for Live bundled in Live</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Ableton</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://help.ableton.com/hc/en-us/articles/360000036850-Max-for-Live-bundled-in-Live" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2018-12-31</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Max For Live Tutorial - Visual in Ableton Is Possible = Ned Rush</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Ned Rush</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=zFtGfj9xKrw" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2020-06-03</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Unlocking TDAbleton in TouchDesigner, TouchDesigner Tutorial 011</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">The Interactive &amp; Immersive HQ</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=YP_g3JUlKg4" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2020-09-10</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">T3X2R, Mayas v2.1, Ableton Visual, Max for Live device</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">T3X2R</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=UW2uL3uAe7I" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2021-01-15</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Max/MSP, Exploring Vizzie 01</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Amazing Max Stuff</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=uM9EugXUovY" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2021-03-22</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Ableton Live Deep Dive: Custom Visuals</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Catalyze Music Academy</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=BzW8F6P4wTM" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2021-04-27</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Videosync 1.0 Demo Project</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Showsync</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=gd36v_yMnRU" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2021-05-12</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Audiovisual Jam, Ableton Live + M4L + Vsynth</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Mafo</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=9FLBmsCvoHM" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2022-02-27</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Introduction to JITTER, pt.1: The Matrix (or, live visuals in Max MSP)</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">oliver thurley</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=Rn1nImut6Pk" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2022-04-08</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">The Best Audio Visualizer for ABLETON</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">wowflower</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=tzwBZ2m0mic" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2024-02-25</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Shaders (GLSL) in Ableton with Harmony Bloom</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Mario Nieto World</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=WPMjFBkZ9cA" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2024-10-30</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Introducing Max 9</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://cycling74.com/products/max-9" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2025-03-14</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Ableton Live Visuals, Tutorial, Tips, &amp; Tricks</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">User Friendly Sounds</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=_opdupBGXWI" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2025-03-17</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Max Tutorial #26: Intro to Jitter1 (Video Player)</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">dearjohnreed</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=LLxxox0172k" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2025-07-27</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Geometrum 02 Visualizer: Master Max for Live Visuals in Minutes Ableton Tutorial</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Synesthetic Flow, Sabina Covarrubias</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=C49SqLCWp-Q" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2026-07-29</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Photism setup and first look</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">photism</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://www.youtube.com/watch?v=hUI5bYpDsO4" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    <tr><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">2026-10-01</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;">Max 9.2.0 Release Notes</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;color:#e0e0e0;white-space:nowrap;">Cycling &apos;74</td><td style="padding:8px 14px 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top;white-space:nowrap;"><a href="https://cycling74.com/releases/max/9.2.0" target="_blank" rel="noopener" style="color:#00d4ff;text-decoration:none;">link</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
 
     <hr style="border: none; border-top: 1px solid #333; margin: 0;">
 
@@ -2402,7 +2488,11 @@
         }
 
         window.addEventListener('hashchange', handleRoute);
-        window.addEventListener('DOMContentLoaded', handleRoute);
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', handleRoute);
+        } else {
+            handleRoute();
+        }
     </script>
 
 
@@ -2474,7 +2564,7 @@
     </script>
 
     <script>
-        /* Banner WebGPU Pixelation Shader - Beta V1.10.02 */
+        /* Banner WebGPU Pixelation Shader - Beta V1.10.03 */
         (async function() {
             const canvas = document.getElementById('bannerCanvas');
             if (!canvas) return;
@@ -2661,7 +2751,7 @@
 
 
     <script>
-        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1.10.02 */
+        /* Particle Cursor Trail - WebGPU Compute + Render - Beta V1.10.03 */
         (async function() {
             const canvas = document.getElementById('particleCanvas');
             if (!canvas || !navigator.gpu) return;
