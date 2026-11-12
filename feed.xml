@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ONEMANSHYO: Content</title>
+    <title>ONEMANSHYO: Blog</title>
     <link>https://onemanshyo.com/</link>
     <atom:link href="https://onemanshyo.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Walkthroughs, references and content by Wes Smith / ONEMANSHYO.</description>
     <language>en-us</language>
+    <item>
+      <title>The History of Shaders as Digital Art</title>
+      <link>https://onemanshyo.com/blog/history-of-shaders-as-digital-art/</link>
+      <guid isPermaLink="true">https://onemanshyo.com/blog/history-of-shaders-as-digital-art/</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+      <description>A chronological journey through shaders as digital art, from 1978 fractal mountains to the vibe-coding era of 2026.</description>
+    </item>
+    <item>
+      <title>The History of Visuals in Ableton Live</title>
+      <link>https://onemanshyo.com/blog/history-of-visuals-in-ableton-live/</link>
+      <guid isPermaLink="true">https://onemanshyo.com/blog/history-of-visuals-in-ableton-live/</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+      <description>A chronological timeline of native visuals in Ableton Live Suite, from Max and Jitter in 1997 through Max for Live, Vizzie and Max 9.2.</description>
+    </item>
   </channel>
 </rss>
