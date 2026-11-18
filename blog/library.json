@@ -1,0 +1,32 @@
+{
+  "generated_epoch": 1795001737,
+  "items": [
+    {
+      "slug": "spider-box-timelapse",
+      "title": "Spider Box Timelapse",
+      "description": "The Spider Box Demo's build in 36 milestones, one bar each",
+      "group": "",
+      "date": "2026-11-17",
+      "type": "page",
+      "link": "/blog/spider-box-timelapse/"
+    },
+    {
+      "slug": "history-of-shaders-as-digital-art",
+      "title": "The History of Shaders as Digital Art",
+      "description": "A chronological journey into shaders according to YouTube",
+      "group": "Walkthroughs",
+      "date": "2026-10-09",
+      "type": "article",
+      "link": "/blog/history-of-shaders-as-digital-art/"
+    },
+    {
+      "slug": "history-of-visuals-in-ableton-live",
+      "title": "The History of Visuals in Ableton Live",
+      "description": "A chronological timeline of native visuals in Ableton Live Suite",
+      "group": "Walkthroughs",
+      "date": "2026-10-06",
+      "type": "article",
+      "link": "/blog/history-of-visuals-in-ableton-live/"
+    }
+  ]
+}
